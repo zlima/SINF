@@ -239,6 +239,47 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
+    #region TopCliente
+
+        public static List<Model.TopCliente> ListaTopCliente(long nr)
+        {
+
+            StdBELista objList;
+
+            Model.TopCliente tc = new Model.TopCliente();
+            List<Model.TopCliente> listTC = new List<Model.TopCliente>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Morada ORDER BY RendimentoCliente DESC");    
+                while (!objList.NoFim())
+
+                {
+                    tc = new Model.TopCliente();
+                    tc.NomeCliente = objList.Valor("NomeCliente");
+                    tc.MoradaCliente = objList.Valor("MoradaCliente");
+                    tc.RendimentoCliente= objList.Valor("RendimentoCliente");
+
+                    listTC.Add(tc);
+                    objList.Seguinte();
+                }
+
+                return listTC;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+        #endregion
+
+        
         #region Artigo
 
         public static Lib_Primavera.Model.Artigo GetArtigo(string codArtigo)
