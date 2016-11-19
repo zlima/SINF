@@ -687,5 +687,48 @@ namespace FirstREST.Lib_Primavera
         }
         #endregion
 
+        #region topRendimento
+
+        public static List<Model.TopRendimento> ListaTopRendimento(long nr)
+        {
+
+            StdBELista objList;
+
+            Model.TopRendimento tr = new Model.TopRendimento();
+            List<Model.TopRendimento> listTR = new List<Model.TopRendimento>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " LinhasDoc.Artigo, Artigo.Descricao as NomeArtigo, sum(Quantidade) AS QuantidadeArtigo, PrecUnit*sum(Quantidade) as Rendimento, PrecUnit FROM LinhasDoc LEFT JOIN CabecDoc on LinhasDoc.IdCabecDoc = CabecDoc.Id left join Artigo on LinhasDoc.Artigo = Artigo.Artigo WHERE CabecDoc.TipoDoc = 'FA' AND LinhasDoc.Artigo <> 'NULL' Group by LinhasDoc.Artigo, Artigo.Descricao, LinhasDoc.PrecUnit ORDER BY Rendimento DESC");
+                while (!objList.NoFim())
+
+                //" Artigo, Descricao as NomeArtigo, Quantidade as QuantidadeArtigo FROM LinhasDoc ORDER BY Quantidade DESC");
+                {
+                    tr = new Model.TopRendimento();
+                    tr.CodArtigo = objList.Valor("Artigo");
+                    tr.NomeArtigo = objList.Valor("NomeArtigo");
+                    tr.QuantidadeArtigo = objList.Valor("QuantidadeArtigo");
+                    tr.PrecUnitArtigo = objList.Valor("PrecUnit");
+                    tr.RendimentoArtigo = objList.Valor("Rendimento");
+
+
+                    listTR.Add(tr);
+                    objList.Seguinte();
+                }
+
+                return listTR;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+        #endregion
+
     }
 }
