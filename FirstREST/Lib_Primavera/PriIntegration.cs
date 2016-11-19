@@ -239,7 +239,6 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
-
         #region Artigo
 
         public static Lib_Primavera.Model.Artigo GetArtigo(string codArtigo)
@@ -313,8 +312,6 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion Artigo
-
-   
 
         #region DocCompra
         
@@ -436,7 +433,6 @@ namespace FirstREST.Lib_Primavera
 
 
         #endregion DocCompra
-
 
         #region DocsVenda
 
@@ -719,6 +715,44 @@ namespace FirstREST.Lib_Primavera
                 }
 
                 return listTR;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+        #endregion
+
+        #region TopCategorias
+        public static List<Model.TopCategoria> ListaTopCategorias(long nr)
+        {
+                StdBELista objList;
+
+            Model.TopCategoria tc = new Model.TopCategoria();
+            List<Model.TopCategoria> listTC = new List<Model.TopCategoria>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr +" Artigo.Familia as Categoria, Familias.Descricao, SUM(PrecoLiquido) as totalCat FROM LinhasDoc LEFT JOIN CabecDoc ON LinhasDoc.IdCabecDoc=CabecDoc.ID LEFT JOIN Artigo ON LinhasDoc.Artigo = Artigo.Artigo LEFT JOIN Familias on Artigo.Familia = Familias.Familia WHERE CabecDoc.TipoDoc = 'FA' AND Artigo.Artigo <> 'NULL' AND Artigo.Familia <> 'NULL' group by Artigo.Familia, Familias.Descricao order by totalCat desc") ;
+        
+         while (!objList.NoFim())
+
+          
+                {
+                    tc = new Model.TopCategoria();
+                    tc.CodFamilia = objList.Valor("Categoria");
+                    tc.Descricao = objList.Valor("descricao");
+                    tc.TotalVend = objList.Valor("totalCat");
+                 
+
+                    listTC.Add(tc);
+                    objList.Seguinte();
+                }
+
+                return listTC;
 
             }
             else
