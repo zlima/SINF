@@ -239,6 +239,49 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
+
+          #region Funcionario
+        
+        public static List<Model.Funcionario> ListaFuncionarios()
+        {
+
+            StdBELista objList;
+
+            Model.Funcionario func = new Model.Funcionario();
+            List<Model.Funcionario> listFuncionarios = new List<Model.Funcionario>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT Codigo as CodFunc, Nome as NomeFunc, VencimentoMensal as OrdenadoMensal, HorasSemana as HorasMes FROM  FUNCIONARIOS");
+                while (!objList.NoFim())
+
+                {
+                    func = new Model.Funcionario();
+                    func.CodFunc = objList.Valor("CodFunc");
+                    func.NomeFunc = objList.Valor("NomeFunc");
+                    func.OrdenadoMensal = objList.Valor("OrdenadoMensal");
+                    func.HorasMes = objList.Valor("HorasMes");
+
+                    listFuncionarios.Add(func);
+                    objList.Seguinte();
+                }
+
+                return listFuncionarios;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+        
+        #endregion
+
+
     #region TopCliente
 
         public static List<Model.TopCliente> ListaTopCliente(long nr)
