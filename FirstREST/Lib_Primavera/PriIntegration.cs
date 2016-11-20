@@ -848,5 +848,45 @@ namespace FirstREST.Lib_Primavera
         }
         #endregion
 
+        
+        #region TotalIncome
+        public static List<Model.TotalIncome> ListaIncome()
+        {
+
+            StdBELista objList;
+
+            Model.TotalIncome inc = new Model.TotalIncome();
+            List<Model.TotalIncome> listINC = new List<Model.TotalIncome>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor FROM CabecDoc WHERE TipoDoc = 'FA'");
+                while (!objList.NoFim())
+
+                {
+                    inc = new Model.TotalIncome();
+                    inc.Valor = objList.Valor("Valor");
+                 
+                    listINC.Add(inc);
+                    objList.Seguinte();
+                }
+
+                return listINC;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+        #endregion
+  
+
+
     }
 }
