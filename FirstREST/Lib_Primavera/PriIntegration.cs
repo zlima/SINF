@@ -848,7 +848,7 @@ namespace FirstREST.Lib_Primavera
         }
         #endregion
 
-        
+
         #region TotalIncome
         public static List<Model.TotalIncome> ListaIncome()
         {
@@ -885,6 +885,44 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion
+
+        
+        #region TotalOutcome
+        public static List<Model.TotalOutcome> ListaOutcome()
+        {
+
+            StdBELista objList;
+
+            Model.TotalOutcome outc = new Model.TotalOutcome();
+            List<Model.TotalOutcome> listOUT = new List<Model.TotalOutcome>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT sum(PrecUnit*Quantidade) as Valor FROM LinhasCompras");
+                while (!objList.NoFim())
+                {
+                    outc = new Model.TotalOutcome();
+                    outc.Valor = objList.Valor("Valor");
+
+                    listOUT.Add(outc);
+                    objList.Seguinte();
+                }
+
+                return listOUT;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+        #endregion
+    
   
 
 
