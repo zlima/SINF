@@ -1107,7 +1107,10 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT COUNT(a.TipoDoc) as CountOrders, COUNT(b.TipoDoc) as CountOrdersb  FROM CabecDoc a, CabecDoc b WHERE a.TipoDoc='ECL' and b.TipoDoc='ECL' and a.Data Between DATEADD(m, -9, GETDATE()) and GETDATE() and b.Data Between DATEADD(m, -10, GETDATE()) and GETDATE()");
+                objList = PriEngine.Engine.Consulta(" SELECT ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-1,GETDATE())) as CountOrders, ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-2,GETDATE())) as CountOrdersb");
+
+               
+
 
                 oc = new Model.NewOrdersNumber();
                 oc.CountOrders = objList.Valor("CountOrders");
