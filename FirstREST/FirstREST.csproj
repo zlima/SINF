@@ -221,6 +221,7 @@
     <Compile Include="Controllers\TopClientesController.cs" />
     <Compile Include="Controllers\TopRendimentoController.cs" />
     <Compile Include="Controllers\TopVendasController.cs" />
+    <Compile Include="Controllers\TotalClientesController.cs" />
     <Compile Include="Controllers\TotalIncomeByMonthController.cs" />
     <Compile Include="Controllers\TotalIncomeController.cs" />
     <Compile Include="Controllers\TotalNovosClientesController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Lib_Primavera\Model\TopCliente.cs" />
     <Compile Include="Lib_Primavera\Model\TopRendimento.cs" />
     <Compile Include="Lib_Primavera\Model\TopVenda.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalClientes.cs" />
     <Compile Include="Lib_Primavera\Model\TotalIncome.cs" />
     <Compile Include="Lib_Primavera\Model\TotalIncomeByMonth.cs" />
     <Compile Include="Lib_Primavera\Model\TotalNovosClientes.cs" />

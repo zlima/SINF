@@ -191,6 +191,39 @@ namespace FirstREST.Lib_Primavera
         }
 
 
+        public static List<Model.TotalClientes> TotalClientes()
+        {
+
+
+            StdBELista objList;
+
+            List<Model.TotalClientes> totalClientes = new List<Model.TotalClientes>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT COUNT(*) as totalclientes  FROM  CLIENTES");
+
+                totalClientes.Add(new Model.TotalClientes
+                {
+                    totalclientes = objList.Valor("totalclientes")
+                
+                });
+
+
+                return totalClientes;
+                }
+
+                 else
+                return null;
+
+            }
+          
+       
+
+
 
         public static Lib_Primavera.Model.RespostaErro InsereClienteObj(Model.Cliente cli)
         {
