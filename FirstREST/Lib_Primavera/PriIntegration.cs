@@ -922,7 +922,45 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion
-    
+
+        #region TotalIncomeByMonth
+
+        public static List<Model.TotalIncomeByMonth> ListaIncomeByMonth(double mes, double ano)
+        {
+
+            StdBELista objList;
+
+            Model.TotalIncomeByMonth incMonth = new Model.TotalIncomeByMonth();
+            List<Model.TotalIncomeByMonth> listINCmonth = new List<Model.TotalIncomeByMonth>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT COALESCE (sum(TotalMerc),0) as Valor FROM [CabecDoc] WHERE (TipoDoc = 'FA') AND month(Data) = " + mes + " AND year(Data) = " + ano + "");
+
+                while (!objList.NoFim())
+
+                {
+                    incMonth = new Model.TotalIncomeByMonth();
+                    incMonth.Valor = objList.Valor("Valor");
+
+                    listINCmonth.Add(incMonth);
+                    objList.Seguinte();
+                }
+
+                return listINCmonth;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+        #endregion
   
 
 
