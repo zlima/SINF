@@ -1001,5 +1001,45 @@ namespace FirstREST.Lib_Primavera
 
         #endregion
 
+            #region TotalNovosClientes
+
+        public static List<Model.TotalNovosClientes> ListaNovosClientes()
+        {
+
+            StdBELista objList;
+
+            Model.TotalNovosClientes tnc = new Model.TotalNovosClientes();
+            List<Model.TotalNovosClientes> listTNC = new List<Model.TotalNovosClientes>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT Cliente as CodCliente, Nome as NomeCliente, Fac_Mor as MoradaCliente, DataCriacao as DataCriacaoCliente  FROM Clientes WHERE DATEDIFF(dy, DataCriacao, getdate()) <= 90 GROUP BY Cliente, Nome, DataCriacao, Fac_Mor ORDER BY DataCriacao DESC");    
+                while (!objList.NoFim())
+                {
+                    tnc = new Model.TotalNovosClientes();
+                    tnc.CodCliente = objList.Valor("CodCliente");
+                    tnc.NomeCliente = objList.Valor("NomeCliente");
+                    tnc.MoradaCliente = objList.Valor("MoradaCliente");
+                    tnc.DataCriacaoCliente = objList.Valor("DataCriacaoCliente");
+
+                    listTNC.Add(tnc);
+                    objList.Seguinte();
+                }
+
+                return listTNC;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+        #endregion  
+
     }
 }
