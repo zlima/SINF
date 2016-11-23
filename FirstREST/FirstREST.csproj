@@ -214,6 +214,7 @@
     <Compile Include="Controllers\DocVendaController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\GetAccountsPayableController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewOrdersNumberController.cs" />
     <Compile Include="Controllers\OrdersCountController.cs" />
@@ -233,6 +234,7 @@
     </Compile>
     <Compile Include="Lib_Primavera\Model\Fornecedor.cs" />
     <Compile Include="Lib_Primavera\Model\Funcionario.cs" />
+    <Compile Include="Lib_Primavera\Model\GetAccountsPayable.cs" />
     <Compile Include="Lib_Primavera\Model\NewOrdersNumber.cs" />
     <Compile Include="Lib_Primavera\Model\OrdersCount.cs" />
     <Compile Include="Lib_Primavera\Model\TopCategoria.cs" />

@@ -1128,5 +1128,27 @@ namespace FirstREST.Lib_Primavera
 
         #endregion 
 
+        #region accounts
+        public static List<Model.GetAccountsPayable> GetAccountsPayable()
+        {
+            StdBELista objList;
+            List<Model.GetAccountsPayable> pyblcnt = new List<Model.GetAccountsPayable>();
+            Model.GetAccountsPayable oc = new Model.GetAccountsPayable();
+
+
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT SUM(TotalDeb) as accountspayable FROM Fornecedores ");
+                oc = new Model.GetAccountsPayable();
+                oc.accountspayable = objList.Valor("accountspayable");
+                pyblcnt.Add(oc);
+            }
+
+            return pyblcnt;
+
+        }
+        #endregion
+
     }
 }
