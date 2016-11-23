@@ -1139,9 +1139,29 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT SUM(TotalDeb) as accountspayable FROM Fornecedores ");
+                objList = PriEngine.Engine.Consulta("SELECT SUM(TotalDeb) as accountspayable FROM Fornecedores WHERE TotalDeb < 0 ");
                 oc = new Model.GetAccountsPayable();
                 oc.accountspayable = objList.Valor("accountspayable");
+                pyblcnt.Add(oc);
+            }
+
+            return pyblcnt;
+
+        }
+
+        public static List<Model.GetAccountsReceivable> GetAccountsReceivable()
+        {
+            StdBELista objList;
+            List<Model.GetAccountsReceivable> pyblcnt = new List<Model.GetAccountsReceivable>();
+            Model.GetAccountsReceivable oc = new Model.GetAccountsReceivable();
+
+
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT SUM(TotalDeb) as accountsreceivable FROM Clientes WHERE TotalDeb < 0 ");
+                oc = new Model.GetAccountsReceivable();
+                oc.accountsreceivable = objList.Valor("accountsreceivable");
                 pyblcnt.Add(oc);
             }
 
