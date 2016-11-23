@@ -10,7 +10,7 @@ namespace FirstREST.Controllers
     public class TotalIncomeController : ApiController
     {
         //
-        // GET: /Income/
+        // GET: /TotalIncome/
 
         public IEnumerable<Lib_Primavera.Model.TotalIncome> Get()
         {

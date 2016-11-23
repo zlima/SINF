@@ -10,7 +10,7 @@ namespace FirstREST.Controllers
     public class TotalOutComeByMonthController : ApiController
     {
         //
-        // GET: /Income/
+        // GET: /Outcome/
 
         public IEnumerable<Lib_Primavera.Model.TotalOutcomeByMonth> Get(double mes, double ano)
         {

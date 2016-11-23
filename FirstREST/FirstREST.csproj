@@ -213,18 +213,36 @@
     <Compile Include="Controllers\DocCompraController.cs" />
     <Compile Include="Controllers\DocVendaController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewOrdersNumberController.cs" />
+    <Compile Include="Controllers\OrdersCountController.cs" />
     <Compile Include="Controllers\TopCategoriasController.cs" />
+    <Compile Include="Controllers\TopClientesController.cs" />
     <Compile Include="Controllers\TopRendimentoController.cs" />
     <Compile Include="Controllers\TopVendasController.cs" />
+    <Compile Include="Controllers\TotalIncomeByMonthController.cs" />
+    <Compile Include="Controllers\TotalIncomeController.cs" />
+    <Compile Include="Controllers\TotalNovosClientesController.cs" />
+    <Compile Include="Controllers\TotalOutComeByMonthController.cs" />
+    <Compile Include="Controllers\TotalOutcomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib_Primavera\Model\Fornecedor.cs" />
+    <Compile Include="Lib_Primavera\Model\Funcionario.cs" />
+    <Compile Include="Lib_Primavera\Model\NewOrdersNumber.cs" />
+    <Compile Include="Lib_Primavera\Model\OrdersCount.cs" />
     <Compile Include="Lib_Primavera\Model\TopCategoria.cs" />
+    <Compile Include="Lib_Primavera\Model\TopCliente.cs" />
     <Compile Include="Lib_Primavera\Model\TopRendimento.cs" />
     <Compile Include="Lib_Primavera\Model\TopVenda.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalIncome.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalIncomeByMonth.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalNovosClientes.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalOutcome.cs" />
+    <Compile Include="Lib_Primavera\Model\TotalOutcomeByMonth.cs" />
     <Compile Include="Lib_Primavera\PriIntegration.cs" />
     <Compile Include="Lib_Primavera\Model\Artigo.cs" />
     <Compile Include="Lib_Primavera\Model\Cliente.cs" />

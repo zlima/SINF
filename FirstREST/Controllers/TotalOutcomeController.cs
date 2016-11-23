@@ -10,7 +10,7 @@ namespace FirstREST.Controllers
     public class TotalOutcomeController : ApiController
     {
         //
-        // GET: /Outcome/
+        // GET: /TotalOutcome/
 
         public IEnumerable<Lib_Primavera.Model.TotalOutcome> Get()
         {

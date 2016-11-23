@@ -1041,5 +1041,56 @@ namespace FirstREST.Lib_Primavera
 
         #endregion  
 
+        #region neworders
+
+        public static List<Model.OrdersCount> OrdersCount()
+        {
+            StdBELista objList;
+            List<Model.OrdersCount> ordrscnt = new List<Model.OrdersCount>();
+            Model.OrdersCount oc = new Model.OrdersCount();
+           
+
+            
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT COUNT(*) as CountOrders FROM CabecDoc WHERE TipoDoc = 'ECL' ");
+                oc = new Model.OrdersCount();
+                oc.CountOrders = objList.Valor("CountOrders");
+                ordrscnt.Add(oc);
+            }
+
+            return ordrscnt;
+
+        }
+
+
+        public static List<Model.NewOrdersNumber> NewOrdersCount()
+        {
+            StdBELista objList;
+            List<Model.NewOrdersNumber> ordrscnt = new List<Model.NewOrdersNumber>();
+            Model.NewOrdersNumber oc = new Model.NewOrdersNumber();
+
+
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT COUNT(a.TipoDoc) as CountOrders, COUNT(b.TipoDoc) as CountOrdersb  FROM CabecDoc a, CabecDoc b WHERE a.TipoDoc='ECL' and b.TipoDoc='ECL' and a.Data Between DATEADD(m, -9, GETDATE()) and GETDATE() and b.Data Between DATEADD(m, -10, GETDATE()) and GETDATE()");
+
+                oc = new Model.NewOrdersNumber();
+                oc.CountOrders = objList.Valor("CountOrders");
+               
+                var CountOrdersa = objList.Valor("CountOrders");
+                var CountOrdersb = objList.Valor("CountOrdersb");
+
+                oc.Increment = CountOrdersa - (CountOrdersb - CountOrdersa);
+                ordrscnt.Add(oc);
+            }
+
+            return ordrscnt;
+
+        }
+
+        #endregion 
+
     }
 }
