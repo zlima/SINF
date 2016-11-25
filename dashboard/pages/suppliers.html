@@ -156,12 +156,12 @@
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                        <th>Cod Cliente</th>
-                         <th>Nome Cliente</th>
+                        <th>Cod Fornecedor</th>
+                         <th>Nome Fornecedor</th>
                           <th>Numero Contribuinte</th>
-                          <th>Morada</th>
-                          <th>Pais</th>
+                          <th>Modo Pagamento</th>
                           <th>Moeda</th>
+                          <th>Divida Total</th>
                         </tr>
                       </thead>
                       <tbody id="clients_table_body">
@@ -219,31 +219,33 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <script src="js/clientes/getclientes.js"/>
+  
     <!-- Datatables -->
     <script>
       $(document).ready(function() {
 
-           $('#datatable-responsive').DataTable({
+        $('#datatable-responsive').DataTable({
         "processing" : true,
         "ajax" : {
-            "url" : "http://localhost:49822/api/Clientes",
+            "url" : "http://localhost:49822/api/Fornecedores",
             dataSrc : ''
         },
+
         "columns" : [ {
-            "data" : "CodCliente"
+            "data" : "CodFornecedor"
         }, {
-            "data" : "NomeCliente"
+            "data" : "Nome"
         }, {
-            "data" : "NumContribuinte"
-        }, {
-            "data" : "Morada"
-        },
+            "data" : "NumContrib"
+        }, 
         {
-          "data" : "Pais"
+          "data" : "ModoPag"
         },
         {
           "data" : "Moeda"
+        },
+        {
+          "data" : "TotalDeb"
         }]
     });
 
@@ -324,6 +326,8 @@
         TableManageButtons.init();
 
       });
+
+      
     </script>
     <!-- /Datatables -->
   </body>
