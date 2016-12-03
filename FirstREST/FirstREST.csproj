@@ -239,6 +239,7 @@
     <Compile Include="Lib_Primavera\Model\Funcionario.cs" />
     <Compile Include="Lib_Primavera\Model\GetAccountsPayable.cs" />
     <Compile Include="Lib_Primavera\Model\GetAccountsReceivable.cs" />
+    <Compile Include="Lib_Primavera\Model\InvoiceList.cs" />
     <Compile Include="Lib_Primavera\Model\NewOrdersNumber.cs" />
     <Compile Include="Lib_Primavera\Model\OrdersCount.cs" />
     <Compile Include="Lib_Primavera\Model\TopCategoria.cs" />
