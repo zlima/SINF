@@ -167,10 +167,10 @@
                                            <div class="tile-stats">
                                              <div class="icon"><i class="glyphicon glyphicon-bullhorn"></i>
                                              </div>
-                                             <div class="count" id="highestincrease">25</div>
+                                             <div class="count" id="newordersqt"></div>
 
                                              <h3>New Orders</h3>
-                                             <p>Lorem ipsum psdea itgum rixt.</p>
+                                             <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
                                          <div class="animated flipInY col-xs-4">
@@ -180,17 +180,17 @@
                                              <div class="count">34</div>
 
                                              <h3>Revenue</h3>
-                                             <p>Lorem ipsum psdea itgum rixt.</p>
+                                             <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
                                          <div class="animated flipInY col-xs-4">
                                            <div class="tile-stats">
                                              <div class="icon"><i class="glyphicon glyphicon-fire"></i>
                                              </div>
-                                             <div class="count">34</div>
+                                             <div class="count" id="clientordersqt"></div>
 
-                                             <h3>Orders</h3>
-                                             <p>Lorem ipsum psdea itgum rixt.</p>
+                                             <h3>Client Orders</h3>
+                                             <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
 
@@ -202,34 +202,34 @@
                                            <div class="tile-stats" id="cenas">
                                              <div class="icon"><i class="glyphicon glyphicon-upload"></i>
                                              </div>
-                                             <div class="count" id="hstockid">22</div>
+                                             <div class="count" id="accountspayaqt"></div>
 
                                              <h3>Accounts Payable</h3>
-                                             <p id="hstockqt">efefe</p>
+                                            <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
                                          <div class="animated flipInY col-xs-4">
                                            <div class="tile-stats">
                                              <div class="icon"><i class="glyphicon glyphicon-download"></i>
                                              </div>
-                                             <div class="count" id="lstockid">22</div>
+                                             <div class="count" id="accountsrecqt"></div>
 
                                              <h3>Accounts Receivable</h3>
-                                             <p id="lstockqt">efefe</p>
+                                            <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
                                          <div class="animated flipInY col-xs-4">
                                            <div class="tile-stats">
                                              <div class="icon"><i class="glyphicon glyphicon-user"></i>
                                              </div>
-                                             <div class="count" id="lstockid">22</div>
+                                             <div class="count" id="newclientesqt"></div>
 
                                              <h3>New Clients</h3>
-                                             <p id="lstockqt">efefe</p>
+                                             <p style="margin: 25px 0;"></p>
                                            </div>
                                          </div>
-                    </div>
-                    </div>
+                                       </div>
+                                     </div>
 
 
 
@@ -238,6 +238,122 @@
                                        </div>
                                        </div>
                                      </div>
+
+                                     <div class="row">
+                                       <div class="col-md-4">
+                                         <div class="x_panel">
+                                           <div class="x_title">
+                                             <h2>Top Clients</h2>
+                                             <ul class="nav navbar-right panel_toolbox">
+                                               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                               </li>
+                                               <li class="dropdown">
+                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                 <ul class="dropdown-menu" role="menu">
+                                                   <li><a href="#">Settings 1</a>
+                                                   </li>
+                                                   <li><a href="#">Settings 2</a>
+                                                   </li>
+                                                 </ul>
+                                               </li>
+                                               <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                               </li>
+                                             </ul>
+                                             <div class="clearfix"></div>
+                                           </div>
+                                           <div class="x_content" id="topclientswidgt">
+                                             <table class="table table-striped" id="topclientstable">
+                                               <thead>
+                                                 <tr>
+                                                   <th>#</th>
+                                                   <th>Name</th>
+                                                   <th>€</th>
+                                                 </tr>
+                                               </thead>
+                                               <tbody>
+
+                                               </tbody>
+                                             </table>
+
+                                           </div>
+
+
+
+                                           </div>
+                                         </div>
+                                         <div class="col-md-4">
+                                           <div class="x_panel">
+                                             <div class="x_title">
+                                               <h2>Top Produtcs</h2>
+                                               <ul class="nav navbar-right panel_toolbox">
+                                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                 </li>
+                                                 <li class="dropdown">
+                                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                   <ul class="dropdown-menu" role="menu">
+                                                     <li><a href="#">Settings 1</a>
+                                                     </li>
+                                                     <li><a href="#">Settings 2</a>
+                                                     </li>
+                                                   </ul>
+                                                 </li>
+                                                 <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                 </li>
+                                               </ul>
+                                               <div class="clearfix"></div>
+                                             </div>
+                                             <div class="x_content" id="topclientswidgt">
+                                               <table class="table table-striped" id="topproductstable">
+                                                 <thead>
+                                                   <tr>
+                                                     <th>#</th>
+                                                     <th>Name</th>
+                                                     <th>Sales Quantity</th>
+                                                   </tr>
+                                                 </thead>
+                                                 <tbody>
+
+                                                 </tbody>
+                                               </table>
+
+                                             </div>
+
+
+
+                                             </div>
+                                           </div>
+                                           <div class="col-md-4">
+                                             <div class="x_panel">
+                                               <div class="x_title">
+                                                 <h2>Top Family</h2>
+                                                 <ul class="nav navbar-right panel_toolbox">
+                                                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                   </li>
+                                                   <li class="dropdown">
+                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                     <ul class="dropdown-menu" role="menu">
+                                                       <li><a href="#">Settings 1</a>
+                                                       </li>
+                                                       <li><a href="#">Settings 2</a>
+                                                       </li>
+                                                     </ul>
+                                                   </li>
+                                                   <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                   </li>
+                                                 </ul>
+                                                 <div class="clearfix"></div>
+                                               </div>
+                                               <div class="x_content" id="topclientswidgt">
+                                                  <div id="echart_pie2" style="height:350px;"></div>
+
+                                               </div>
+
+
+
+                                               </div>
+                                             </div>
+                                       </div>
+
 
                   </div>
 
@@ -285,41 +401,365 @@
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- ECharts -->
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
     <!-- Datatables -->
     <script>
+    var theme = {
+        color: [
+            '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+            '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+        ],
+
+        title: {
+            itemGap: 8,
+            textStyle: {
+                fontWeight: 'normal',
+                color: '#408829'
+            }
+        },
+
+        dataRange: {
+            color: ['#1f610a', '#97b58d']
+        },
+
+        toolbox: {
+            color: ['#408829', '#408829', '#408829', '#408829']
+        },
+
+        tooltip: {
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            axisPointer: {
+                type: 'line',
+                lineStyle: {
+                    color: '#408829',
+                    type: 'dashed'
+                },
+                crossStyle: {
+                    color: '#408829'
+                },
+                shadowStyle: {
+                    color: 'rgba(200,200,200,0.3)'
+                }
+            }
+        },
+
+        dataZoom: {
+            dataBackgroundColor: '#eee',
+            fillerColor: 'rgba(64,136,41,0.2)',
+            handleColor: '#408829'
+        },
+        grid: {
+            borderWidth: 0
+        },
+
+        categoryAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#408829'
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: ['#eee']
+                }
+            }
+        },
+
+        valueAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#408829'
+                }
+            },
+            splitArea: {
+                show: true,
+                areaStyle: {
+                    color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: ['#eee']
+                }
+            }
+        },
+        timeline: {
+            lineStyle: {
+                color: '#408829'
+            },
+            controlStyle: {
+                normal: {color: '#408829'},
+                emphasis: {color: '#408829'}
+            }
+        },
+
+        k: {
+            itemStyle: {
+                normal: {
+                    color: '#68a54a',
+                    color0: '#a9cba2',
+                    lineStyle: {
+                        width: 1,
+                        color: '#408829',
+                        color0: '#86b379'
+                    }
+                }
+            }
+        },
+        map: {
+            itemStyle: {
+                normal: {
+                    areaStyle: {
+                        color: '#ddd'
+                    },
+                    label: {
+                        textStyle: {
+                            color: '#c12e34'
+                        }
+                    }
+                },
+                emphasis: {
+                    areaStyle: {
+                        color: '#99d2dd'
+                    },
+                    label: {
+                        textStyle: {
+                            color: '#c12e34'
+                        }
+                    }
+                }
+            }
+        },
+        force: {
+            itemStyle: {
+                normal: {
+                    linkStyle: {
+                        strokeColor: '#408829'
+                    }
+                }
+            }
+        },
+        chord: {
+            padding: 4,
+            itemStyle: {
+                normal: {
+                    lineStyle: {
+                        width: 1,
+                        color: 'rgba(128, 128, 128, 0.5)'
+                    },
+                    chordStyle: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        }
+                    }
+                },
+                emphasis: {
+                    lineStyle: {
+                        width: 1,
+                        color: 'rgba(128, 128, 128, 0.5)'
+                    },
+                    chordStyle: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        }
+                    }
+                }
+            }
+        },
+        gauge: {
+            startAngle: 225,
+            endAngle: -45,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
+                    width: 8
+                }
+            },
+            axisTick: {
+                splitNumber: 10,
+                length: 12,
+                lineStyle: {
+                    color: 'auto'
+                }
+            },
+            axisLabel: {
+                textStyle: {
+                    color: 'auto'
+                }
+            },
+            splitLine: {
+                length: 18,
+                lineStyle: {
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                length: '90%',
+                color: 'auto'
+            },
+            title: {
+                textStyle: {
+                    color: '#333'
+                }
+            },
+            detail: {
+                textStyle: {
+                    color: 'auto'
+                }
+            }
+        },
+        textStyle: {
+            fontFamily: 'Arial, Verdana, sans-serif'
+        }
+    };
+
       $(document).ready(function() {
 
+
+           function kFormatter(num) {
+                if(num > 99999 || num < -99999 )
+               return (num/100000).toFixed(1) + 'B';
+               else if(num > 9999 || num < -9999)
+               return (num/10000).toFixed(1) + 'M';
+               else if(num > 999 || num < -999)
+               return (num/1000).toFixed(1) + 'K';
+                else return num;
+           }
+
         $.ajax({
-            url: 'http://localhost:49822/api/Clientes',
+            url: 'http://localhost:49822/api/Dashboard',
             dataType: "json",
             success : function(data, textStatus, jqXHR) {
-              $('#datatable-responsive').DataTable({
-                 "data": data,
-                 "columns" : [ {
-                     "data" : "CodCliente"
-                 }, {
-                     "data" : "NomeCliente"
-                 }, {
-                     "data" : "NumContribuinte"
-                 }, {
-                     "data" : "Morada"
-                 },
-                 {
-                   "data" : "Pais"
-                 },
-                 {
-                   "data" : "Moeda"
-                 }]
 
-             });
+              $('#newclientesqt').text(data[0].NewClients);
+              $('#accountspayaqt').text(kFormatter(data[0].AccountsPayable));
+              $('#accountsrecqt').text(kFormatter(data[0].AccountsReceivable));
+              $('#clientordersqt').text(data[0].Orders);
+              $('#newordersqt').text(data[0].newOrders);
 
-    $('#loading').css("display", "none");
-    $('#hiddendiv').css("visibility", "visible");
+              for (i = 0; i < data[0].TopClientes.length; i++) {
+                data[0].TopClientes[i].RendimentoCliente = kFormatter(data[0].TopClientes[i].RendimentoCliente);
+
+                }
+
+              $("#topclientstable").DataTable({
+                "bPaginate": false,
+                "bFilter": false,
+                "bInfo": false,
+                "paging":   false,
+                "ordering": false,
+                "info":     false,
+                "data": data[0].TopClientes,
+                "columns" : [ {
+                    "data" : "Numbercnt"
+                },{
+                    "data" : "NomeCliente"
+                }, {
+                    "data" :  "RendimentoCliente"
+                }
+              ]
+
+            });
+
+            $("#topproductstable").DataTable({
+              "bPaginate": false,
+              "bFilter": false,
+              "bInfo": false,
+              "paging":   false,
+              "ordering": false,
+              "info":     false,
+              "data": data[0].TopProducts,
+              "columns" : [ {
+                  "data" : "Numbercnt"
+              },{
+                  "data" : "NomeArtigo"
+              }, {
+                  "data" :  "QuantidadeArtigo"
+              }
+            ]
+
+          });
+
+
+
+
+
+            var echartPieCollapse = echarts.init(document.getElementById('echart_pie2'), theme);
+
+            echartPieCollapse.setOption({
+              tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+              },
+              legend: {
+                x: 'center',
+                y: 'bottom',
+                data: [data[0].TopFamilia[0].Descricao, data[0].TopFamilia[1].Descricao, data[0].TopFamilia[2].Descricao, data[0].TopFamilia[3].Descricao, data[0].TopFamilia[4].Descricao, data[0].TopFamilia[5].Descricao]
+              },
+              toolbox: {
+                show: true,
+                feature: {
+                  magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                  },
+                  restore: {
+                    show: true,
+                    title: "Restore"
+                  },
+                  saveAsImage: {
+                    show: true,
+                    title: "Save Image"
+                  }
+                }
+              },
+              calculable: true,
+              series: [{
+                name: 'Area Mode',
+                type: 'pie',
+                radius: [25, 90],
+                center: ['50%', 170],
+                roseType: 'area',
+                x: '50%',
+                max: 40,
+                sort: 'ascending',
+                data: [{
+                  value: data[0].TopFamilia[0].TotalVend,
+                  name: data[0].TopFamilia[0].Descricao,
+                }, {
+                  value: data[0].TopFamilia[1].TotalVend,
+                  name: data[0].TopFamilia[1].Descricao
+                }, {
+                  value: data[0].TopFamilia[2].TotalVend,
+                  name: data[0].TopFamilia[2].Descricao
+                }, {
+                  value: data[0].TopFamilia[3].TotalVend,
+                  name: data[0].TopFamilia[3].Descricao
+                }, {
+                  value: data[0].TopFamilia[4].TotalVend,
+                  name: data[0].TopFamilia[4].Descricao
+                }, {
+                  value: data[0].TopFamilia[5].TotalVend,
+                  name: data[0].TopFamilia[5].Descricao
+                }]
+              }]
+            });
+
+
+              $('#loading').css("display", "none");
+              $('#hiddendiv').css("visibility", "visible");
+              $('#loading').css("display", "none");
+              $('#hiddendiv').css("visibility", "visible");
   }
-  });
+});
 
 
         var handleDataTableButtons = function() {

@@ -273,7 +273,7 @@ namespace FirstREST.Lib_Primavera
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
 
-          #region Funcionario
+        #region Funcionario
         
         public static List<Model.Funcionario> ListaFuncionarios()
         {
@@ -315,7 +315,7 @@ namespace FirstREST.Lib_Primavera
         #endregion
 
 
-    #region TopCliente
+        #region TopCliente
 
         public static List<Model.TopCliente> ListaTopCliente(long nr)
         {
@@ -995,7 +995,7 @@ namespace FirstREST.Lib_Primavera
 
         #endregion
   
-          #region TotalOutcomeByMonth
+        #region TotalOutcomeByMonth
 
         public static List<Model.TotalOutcomeByMonth> ListaOutcomeByMonth(double mes, double ano)
         {
@@ -1034,7 +1034,7 @@ namespace FirstREST.Lib_Primavera
 
         #endregion
 
-            #region TotalNovosClientes
+        #region TotalNovosClientes
 
         public static List<Model.TotalNovosClientes> ListaNovosClientes()
         {
@@ -1117,7 +1117,6 @@ namespace FirstREST.Lib_Primavera
                
                 var CountOrdersa = objList.Valor("CountOrders");
                 var CountOrdersb = objList.Valor("CountOrdersb");
-
                 oc.Increment = CountOrdersa - (CountOrdersb - CountOrdersa);
                 ordrscnt.Add(oc);
             }
@@ -1169,6 +1168,105 @@ namespace FirstREST.Lib_Primavera
 
         }
         #endregion
+
+        #region Dashboard
+        public static List<Model.Dashboard> GetDashboard()
+        {
+            StdBELista objList;
+            StdBELista objList2;
+            StdBELista objList3;
+            StdBELista objList4;
+            StdBELista objList5;
+
+            List<Model.Dashboard> pyblcnt = new List<Model.Dashboard>();
+            Model.Dashboard oc = new Model.Dashboard();
+            Model.TopCliente tc = new Model.TopCliente();
+            List<Model.TopCliente> ltc = new List<Model.TopCliente>();
+            Model.TopCategoria tcat = new Model.TopCategoria();
+            List<Model.TopCategoria> ltcat = new List<Model.TopCategoria>();
+            Model.TopVenda tvend = new Model.TopVenda();
+            List<Model.TopVenda> ltvend = new List<Model.TopVenda>();
+
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT (SELECT SUM(TotalDeb) FROM Clientes WHERE TotalDeb < 0) as accountsreceivable,( SELECT SUM(TotalDeb) FROM Fornecedores WHERE TotalDeb < 0) as accountspayable, (SELECT COUNT(Cliente) FROM Clientes WHERE DATEDIFF(dy, DataCriacao, getdate()) <= 90) as countcli, (SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL') as totalorders ");
+                objList3 = PriEngine.Engine.Consulta("SELECT TOP 5 Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Morada ORDER BY RendimentoCliente DESC");    
+                objList2 = PriEngine.Engine.Consulta(" SELECT ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-1,GETDATE())) as CountOrders, ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-2,GETDATE())) as CountOrdersb");
+                objList4 = PriEngine.Engine.Consulta("SELECT TOP 7 Artigo.Familia as Categoria, Familias.Descricao, SUM(PrecoLiquido) as totalCat FROM LinhasDoc LEFT JOIN CabecDoc ON LinhasDoc.IdCabecDoc=CabecDoc.ID LEFT JOIN Artigo ON LinhasDoc.Artigo = Artigo.Artigo LEFT JOIN Familias on Artigo.Familia = Familias.Familia WHERE CabecDoc.TipoDoc = 'FA' AND Artigo.Artigo <> 'NULL' AND Artigo.Familia <> 'NULL' group by Artigo.Familia, Familias.Descricao order by totalCat desc");
+                objList5 = PriEngine.Engine.Consulta("SELECT TOP 5 LinhasDoc.Artigo, Artigo.Descricao as NomeArtigo, sum(Quantidade) AS QuantidadeArtigo FROM LinhasDoc LEFT JOIN CabecDoc on LinhasDoc.IdCabecDoc = CabecDoc.Id left join Artigo on LinhasDoc.Artigo = Artigo.Artigo WHERE CabecDoc.TipoDoc = 'FA' AND LinhasDoc.Artigo <> 'NULL' Group by LinhasDoc.Artigo, Artigo.Descricao ORDER BY QuantidadeArtigo DESC");
+                oc = new Model.Dashboard();
+                oc.AccountsReceivable = objList.Valor("accountsreceivable");
+                oc.AccountsPayable = objList.Valor("accountspayable");
+                oc.NewClients = objList.Valor("countcli");
+                oc.Orders = objList.Valor("totalorders");
+                oc.newOrders = objList2.Valor("CountOrders");
+
+                int count = 1;
+                while (!objList3.NoFim())
+                {
+                    tc = new Model.TopCliente();
+                    tc.Numbercnt = count;
+                    tc.NomeCliente = objList3.Valor("NomeCliente");
+                    tc.MoradaCliente = objList3.Valor("MoradaCliente");
+                    tc.RendimentoCliente = objList3.Valor("RendimentoCliente");
+
+                    ltc.Add(tc);
+                    objList3.Seguinte();
+                    count++;
+                }
+
+                oc.TopClientes = ltc;
+
+                while (!objList4.NoFim())
+                {
+                    tcat = new Model.TopCategoria();
+                    tcat.CodFamilia = objList4.Valor("Categoria");
+                    tcat.Descricao = objList4.Valor("descricao");
+                    tcat.TotalVend = objList4.Valor("totalCat");
+
+
+                    ltcat.Add(tcat);
+                    objList4.Seguinte();
+                }
+
+                oc.TopFamilia = ltcat;
+
+
+                int cnt2 = 1;
+                
+                while (!objList5.NoFim())
+
+                //" Artigo, Descricao as NomeArtigo, Quantidade as QuantidadeArtigo FROM LinhasDoc ORDER BY Quantidade DESC");
+                {
+                    tvend = new Model.TopVenda();
+                    tvend.Numbercnt = cnt2;
+                    tvend.CodArtigo = objList5.Valor("Artigo");
+                    tvend.NomeArtigo = objList5.Valor("NomeArtigo");
+                    tvend.QuantidadeArtigo = objList5.Valor("QuantidadeArtigo");
+
+                    ltvend.Add(tvend);
+                    objList5.Seguinte();
+                    cnt2++;
+                }
+
+                oc.TopProducts = ltvend;
+
+
+                var CountOrdersa = objList2.Valor("CountOrders");
+                var CountOrdersb = objList2.Valor("CountOrdersb");
+                oc.Increment = CountOrdersa - (CountOrdersb - CountOrdersa);
+
+
+                pyblcnt.Add(oc);
+            }
+
+            return pyblcnt;
+
+        }
+
+        #endregion
+
 
     }
 }

@@ -26,6 +26,12 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+
+        public int Numbercnt
+        {
+            get;
+            set;
+        }
     }
 }
 
