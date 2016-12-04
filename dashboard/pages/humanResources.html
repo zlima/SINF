@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DataTables | Gentellela</title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/loadingcss.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="clients.html" class="site_title"><i class="fa"><img src="images/icon.png" height="25" width="25"></i> <span>Loja XPTO!</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="index.html"><i class="fa fa-laptop"></i>Overview</a></li>
+                    <li><a href="clients.html"><i class="fa fa-user"></i>Clients</a></li>
+                    <li><a href="suppliers.html"><i class="fa fa-user"></i>Suppliers</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> Sales <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="invoicelist.html"><i class="fa fa-file-text"></i>Invoice List</a></li>
+                    <li><a href="orders.html"><i class="fa fa-file-text"></i>Orders</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-group"></i> Human Resources <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="humanResources.html">Employees</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-table"></i> Financial and Accounting <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="tables.html">Tables</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-bar-chart-o"></i> Supply Chain <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="produtos.html"><i class="fa fa-dropbox"></i>Products</a></li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+
+
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+          <!-- <div class="page-title">
+            <div class="title_left">
+              <h3>Widget Designs</h3>
+            </div>
+
+            <div class="title_right">
+              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="clearfix"></div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="">
+                <div class="x_content">
+                  <br />
+                  <div class="row">
+
+                    <div class="x_content">
+                      <p class="text-muted font-13 m-b-30">
+                        Summary of all Emloyees
+                      </p>
+                      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                          <tr>
+                            <th>Cod Funcionario</th>
+                            <th>Nome Funcionario</th>
+                            <th>Ordenado Mensal</th>
+                            <th>Horas Mensais</th>
+                          </tr>
+                        </thead>
+                        <tbody id="employees_table_body">
+                        </tbody>
+                      </table>
+                    </div>
+
+
+                    <!--   <div class="col-md-3 col-xs-12 widget widget_tally_box">
+                        <div class="x_panel fixed_height_390">
+                          <div class="x_title">
+                          <h2>Payments</h2>
+                           <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+
+                            <div style="text-align: center; overflow: hidden; margin: 10px 5px 0;">
+                              <canvas id="canvas_line1" height="200"></canvas>
+                            </div>
+
+                            <div style="text-align: center; margin-bottom: 15px;">
+                              <div class="btn-group" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-default btn-sm">Day</button>
+                                <button type="button" class="btn btn-default btn-sm">Month</button>
+                                <button type="button" class="btn btn-default btn-sm">Year</button>
+                              </div>
+                            </div>
+
+                            <div>
+                              <ul class="list-inline widget_tally">
+                                <li>
+                                  <p>
+                                    <span class="month">12 December 2014 </span>
+                                    <span class="count">+12%</span>
+                                  </p>
+                                </li>
+                                <li>
+                                  <p>
+                                    <span class="month">29 December 2014 </span>
+                                    <span class="count">+12%</span>
+                                  </p>
+                                </li>
+                                <li>
+                                  <p>
+                                    <span class="month">16 January 2015 </span>
+                                    <span class="count">+12%</span>
+                                  </p>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+
+
+
+                      <div class="col-md-3 col-xs-12 widget widget_tally_box">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Payments</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <!--<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>-->
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <div style="text-align: center; margin-bottom: 17px">
+                              <span class="chart" data-percent="86">
+                                <span class="percent"></span>
+                              </span>
+                            </div>
+                            <div class="pie_bg" style="text-align: center; display: none; margin-bottom: 17px">
+                              <canvas id="canvas_doughnut" height="130"></canvas>
+                            </div>
+                            <div style="text-align: center;">
+                              <div class="btn-group" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-default btn-sm">1 D</button>
+                                <button type="button" class="btn btn-default btn-sm">1 W</button>
+                                <button type="button" class="btn btn-default btn-sm">1 M</button>
+                                <button type="button" class="btn btn-default btn-sm">1 Y</button>
+                              </div>
+                            </div>
+                            <div style="text-align: center; overflow: hidden; margin: 10px 5px 3px;">
+                              <canvas id="canvas_line" height="190"></canvas>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Employees Gender</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <canvas id="pieChart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>    
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- easy-pie-chart -->
+    <script src="../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+    <!-- chart js -->
+    <!-- <script type="text/javascript" src="js/moment/moment.min.js"></script> -->
+    <!-- <script src="js/chartjs/chart.min.js"></script> -->
+    <!-- bootstrap progress js -->
+    <!-- <script src="js/progressbar/bootstrap-progressbar.min.js"></script> -->
+    <!-- icheck -->
+    <!-- <script src="js/icheck/icheck.min.js"></script> -->
+
+    <!-- <script src="../build/js/custom.min.js"></script> -->
+
+    <!-- pace -->
+    <!-- <script src="js/pace/pace.min.js"></script> -->
+
+    <!-- sparkline -->
+    <!-- <script src="js/sparkline/jquery.sparkline.min.js"></script> -->
+    <!-- easypie -->
+    <!-- <script src="js/easypie/jquery.easypiechart.min.js"></script> -->
+
+    <script>
+     $(document).ready(function() {
+
+
+      $.ajax({
+        url: 'http://localhost:49822/api/Funcionarios',
+        dataType: "json",
+        success : function(data, textStatus, jqXHR) {
+          $('#datatable-responsive').DataTable({
+           "data": data,
+           "columns" : [ {
+             "data" : "CodFunc"
+           }, {
+             "data" : "NomeFunc"
+           }, {
+             "data" : "OrdenadoMensal"
+           }, {
+            "data" : "HorasMes"
+          }
+          ]
+
+        });
+
+          $('#loading').css("display", "none");
+          $('#hiddendiv').css("visibility", "visible");
+
+        } });
+
+
+      var handleDataTableButtons = function() {
+        if ($("#datatable-buttons").length) {
+          $("#datatable-buttons").DataTable({
+            dom: "Bfrtip",
+            buttons: [
+            {
+              extend: "copy",
+              className: "btn-sm"
+            },
+            {
+              extend: "csv",
+              className: "btn-sm"
+            },
+            {
+              extend: "excel",
+              className: "btn-sm"
+            },
+            {
+              extend: "pdfHtml5",
+              className: "btn-sm"
+            },
+            {
+              extend: "print",
+              className: "btn-sm"
+            },
+            ],
+            responsive: true
+          });
+        }
+      };
+
+      TableManageButtons = function() {
+        "use strict";
+        return {
+          init: function() {
+            handleDataTableButtons();
+          }
+        };
+      }();
+
+      //  $('#datatable').dataTable();
+
+      $('#datatable-keytable').DataTable({
+        keys: true
+      });
+
+
+
+      $('#datatable-scroller').DataTable({
+        ajax: "js/datatables/json/scroller-demo.json",
+        deferRender: true,
+        scrollY: 380,
+        scrollCollapse: true,
+        scroller: true
+      });
+
+      $('#datatable-fixed-header').DataTable({
+        fixedHeader: true
+      });
+
+      var $datatable = $('#datatable-checkbox');
+
+      $datatable.dataTable({
+        'order': [[ 1, 'asc' ]],
+        'columnDefs': [
+        { orderable: false, targets: [0] }
+        ]
+      });
+      $datatable.on('draw.dt', function() {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_flat-green'
+        });
+      });
+
+      TableManageButtons.init();
+
+    });
+
+
+
+  </script>
+
+
+  <script>
+    $(function() {
+      $('.chart').easyPieChart({
+        easing: 'easeOutElastic',
+        delay: 3000,
+        barColor: '#26B99A',
+        trackColor: '#fff',
+        scaleColor: false,
+        lineWidth: 20,
+        trackWidth: 16,
+        lineCap: 'butt',
+        onStep: function(from, to, percent) {
+          $(this.el).find('.percent').text(Math.round(percent));
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      Chart.defaults.global.legend = {
+        enabled: false
+      };
+
+      new Chart(document.getElementById("canvas_line"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
+      });
+
+
+      // Pie chart
+      var ctx = document.getElementById("pieChart");
+      var data = {
+        datasets: [{
+          data: [50, 50],
+          backgroundColor: [
+          "#FF00FF",
+          "#3498DB"
+          ],
+          label: 'My dataset' // for legend
+        }],
+        labels: [
+        "Pink",
+        "Blue"
+        ]
+      };
+
+      var pieChart = new Chart(ctx, {
+        data: data,
+        type: 'pie',
+        otpions: {
+          legend: false
+        }
+      });
+
+
+
+
+      new Chart(document.getElementById("canvas_line4"), {
+        type: 'line',
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+            label: "My First dataset",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: [31, 74, 6, 39, 20, 85, 7]
+          }, {
+            label: "My Second dataset",
+            backgroundColor: "rgba(3, 88, 106, 0.3)",
+            borderColor: "rgba(3, 88, 106, 0.70)",
+            pointBorderColor: "rgba(3, 88, 106, 0.70)",
+            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            pointBorderWidth: 1,
+            data: [82, 23, 66, 9, 99, 4, 2]
+          }]
+        },
+      });
+    });
+  </script>
+
+</body>
+</html>
