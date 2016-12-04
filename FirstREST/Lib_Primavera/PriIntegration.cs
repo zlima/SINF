@@ -315,7 +315,7 @@ namespace FirstREST.Lib_Primavera
         #endregion
 
 
-        #region TopCliente
+          #region TopCliente
 
         public static List<Model.TopCliente> ListaTopCliente(long nr)
         {
@@ -329,11 +329,12 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Morada ORDER BY RendimentoCliente DESC");    
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Entidade as CodCliente, Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Entidade, Morada ORDER BY RendimentoCliente DESC");    
                 while (!objList.NoFim())
 
                 {
                     tc = new Model.TopCliente();
+                    tc.CodCliente = objList.Valor("CodCliente");
                     tc.NomeCliente = objList.Valor("NomeCliente");
                     tc.MoradaCliente = objList.Valor("MoradaCliente");
                     tc.RendimentoCliente= objList.Valor("RendimentoCliente");
@@ -354,7 +355,6 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion
-
         
         #region Artigo
 

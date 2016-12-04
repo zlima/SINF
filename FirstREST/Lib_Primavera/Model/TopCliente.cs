@@ -32,5 +32,11 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string CodCliente
+        {
+            get;
+            set;
+        }
+
     }
 }
