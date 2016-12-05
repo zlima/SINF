@@ -50,7 +50,17 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
- 
+
+        public Model.ClienteFac Cliente
+        {
+            get;
+            set;
+        }
+        public DateTime DataVencimento
+        {
+            get;
+            set;
+        }
 
     }
 }

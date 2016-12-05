@@ -5,68 +5,55 @@ using System.Web;
 
 namespace FirstREST.Lib_Primavera.Model
 {
-    public class LinhaDocVenda
+    public class ClienteFac
     {
-
-
-        public string CodArtigo
+        public string Nome
         {
             get;
             set;
         }
 
-         public string DescArtigo
+        public string Morada
         {
             get;
             set;
         }
 
-         public string IdCabecDoc
-         {
-             get;
-             set;
-         }
-
-
-
-         public double Quantidade
+        public string Telefone
         {
             get;
             set;
         }
 
-         public string Unidade
+        public string NumContribuinte
         {
             get;
             set;
         }
 
-         public double Desconto
+        public string Pais
         {
             get;
             set;
         }
 
-         public double PrecoUnitario
+        public string Local
         {
             get;
             set;
         }
 
-         public double TotalILiquido
+        public string CodPostal
         {
             get;
             set;
         }
 
-          public double TotalLiquido
+        public string CodPostalLocalidade
         {
             get;
             set;
         }
-
-         
-
 
     }
 }

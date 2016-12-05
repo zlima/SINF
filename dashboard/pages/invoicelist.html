@@ -172,7 +172,7 @@
                           <div class="controls">
                             <div class="input-prepend input-group">
                               <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                              <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="02/01/2015 - 01/25/2016" />
+                              <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control"  value="01/05/2015 - 12/31/2015" />
                             </div>
                           </div>
                         </div>
@@ -197,7 +197,165 @@
                 </ul>
                 <div class="clearfix"></div>
               </div>
-              <div class="x_content">
+              <!--invoice html -->
+              <div class="x_content" id="invoicecontent" style="display:none;">
+
+                <section class="content invoice">
+                  <!-- title row -->
+                  <div class="row">
+                    <div class="col-xs-12 invoice-header">
+                      <h1>
+                                      <i class="fa fa-globe"></i> Invoice.
+                                      <small class="pull-right" id="invdate"></small>
+                                  </h1>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- info row -->
+                  <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                      From
+                      <address>
+                                      <strong>Loja Xpto, Inc.</strong>
+                                      <br>Rua Dr. Roberto Frias 600
+                                      <br>Porto, Portugal 4200-465
+                                      <br>Phone: 1 (+351) 225081400
+                                      <br>Email: xpto@fe.up.com
+                                  </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                      To
+                      <address>
+
+
+
+                                      <strong id="invIden"></strong>
+                                      <br id="invMor">
+                                      <br id="invPais">
+                                      <br id="invTelef">
+                                      <br id="invContr">
+                                  </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                      <b id="invNo"></b>
+                      <br>
+                      <br>
+                      <b id="invSerie">Serie: </b>
+                      <br>
+                      <b id="invDue">Payment Due:</b>
+                      <br>
+                    <!--  <b>Account:</b> 968-34567-->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <!-- Table row -->
+                  <div class="row">
+                    <div class="col-xs-12 table">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Qty</th>
+                            <th>Product</th>
+                            <th>Serial #</th>
+                            <th style="width: 59%">Description</th>
+                            <th>Subtotal</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>Call of Duty</td>
+                            <td>455-981-221</td>
+                            <td>El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
+                            </td>
+                            <td>$64.50</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Need for Speed IV</td>
+                            <td>247-925-726</td>
+                            <td>Wes Anderson umami biodiesel</td>
+                            <td>$50.00</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Monsters DVD</td>
+                            <td>735-845-642</td>
+                            <td>Terry Richardson helvetica tousled street art master, El snort testosterone trophy driving gloves handsome letterpress erry Richardson helvetica tousled</td>
+                            <td>$10.70</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Grown Ups Blue Ray</td>
+                            <td>422-568-642</td>
+                            <td>Tousled lomo letterpress erry Richardson helvetica tousled street art master helvetica tousled street art master, El snort testosterone</td>
+                            <td>$25.99</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-6">
+                      <p class="lead">Payment Methods:</p>
+                      <img src="images/visa.png" alt="Visa">
+                      <img src="images/mastercard.png" alt="Mastercard">
+                      <img src="images/american-express.png" alt="American Express">
+                      <img src="images/paypal.png" alt="Paypal">
+                      <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                      </p>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-6">
+                      <p class="lead">Amount Due 2/22/2014</p>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th style="width:50%">Subtotal:</th>
+                              <td>$250.30</td>
+                            </tr>
+                            <tr>
+                              <th>Tax (9.3%)</th>
+                              <td>$10.34</td>
+                            </tr>
+                            <tr>
+                              <th>Shipping:</th>
+                              <td>$5.80</td>
+                            </tr>
+                            <tr>
+                              <th>Total:</th>
+                              <td>$265.24</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <!-- this row will not appear when printing -->
+                  <div class="row no-print">
+                    <div class="col-xs-12">
+                      <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                      <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                      <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <!-- end invoice -->
+              <div class="x_content" id="invoicelistcontent">
                 <p class="text-muted font-13 m-b-30">
                   Summary of Invoices
                 </p>
@@ -209,6 +367,7 @@
                       <th>Entidade</th>
                       <th>Total Merc</th>
                       <th>Date</th>
+                      <th>Expand</th>
                     </tr>
                   </thead>
                   <tbody id="clients_table_body">
@@ -313,20 +472,25 @@
 
     var sqldate= year.toString()+'-'+month.toString()+'-'+day.toString()+'T00:00:00';
 
-    $('#reservation').attr("value",'02/01/2015 - '+day+'/'+month+'/'+year+'');
+    $('#reservation').attr("value",'01/06/2016 - '+day+'/'+month+'/'+year+'');
 
     $.ajax({
       url: 'http://localhost:49822/api/DocVenda',
       data:{
        typeDoc: 'FA',
-       dateBegin: '2015-01-02T00:00:00',
+       dateBegin: '2016-06-01T00:00:00',
        dateEnd: sqldate
      },
 
      dataType: "json",
      success : function(data, textStatus, jqXHR) {
       $('#datatable-responsive').DataTable({
-       "data": data,
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<div style='text-align:center;'><button><i class='fa fa-expand'></i></button><div>"
+        } ],
+        "data":data,
        "columns" : [ {
          "data" : "NumDoc"
        },{
@@ -337,8 +501,9 @@
          "data" : "TotalMerc"
        },{
          "data" : "Data"
-       }
-       ]
+       },{
+         "data" : ""
+       }]
      });
 
 
@@ -348,6 +513,22 @@
     }
   });
 
+//codigo do expand
+  $('#datatable-responsive tbody').on( 'click', 'button', function () {
+          var data = $('#datatable-responsive').DataTable().row( $(this).parents('tr') ).data();
+
+
+          $('#test').click();
+          $('#invoicelistcontent').css("visibility", "hidden");
+
+          populateInvoice(data);
+
+          $('#invoicecontent').css("visibility", "visible");
+
+
+        //  alert( JSON.stringify(data) );
+      } );
+//---
 
     var handleDataTableButtons = function() {
       if ($("#datatable-buttons").length) {
@@ -430,12 +611,59 @@
 
     });
 
+
+    var formatData = function(data){
+      var st = data;
+      st = st.slice(0,10)
+      var pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
+      var dt = st.replace(pattern,'$3-$2-$1');
+      return dt;
+    }
+
+  var  populateInvoice = function(data){
+
+
+
+
+      $('#invdate').text("Date: "+formatData(data.Data));
+
+      $('#invNo').text("Invoice #"+data.NumDoc);
+      $("#invSerie").after(data.Serie);
+      $("#invIden").text(data.Cliente.Nome);
+      $("#invMor").after(data.Cliente.Morada);
+      $("#invPais").after(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
+      $("#invTelef").after("Phone: "+data.Cliente.Telefone);
+      $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
+      $("#invDue").after(" "+formatData(data.DataVencimento));
+
+
+
+
+/*
+      "Cliente": {
+      "Nome": "Sofrio, Lda",
+      "Morada": "AV. DO ETERNO GELO, 88888",
+      "Telefone": "200267890",
+      "NumContribuinte": "123456789",
+      "MetPag": null,
+      "Pais": "PT"
+    }*/
+
+    }
+
+
   </script>
   <!-- /Datatables -->
 
   <script>
     $(document).ready(function() {
-      $('#reservation').daterangepicker(null, function(start, end, label) {
+
+      $('#reservation').daterangepicker({
+    locale: {
+      format: 'DD-MM-YYYY'
+    },
+
+}, function(start, end, label) {
 
         $('#test').click();
         $('#loading2').css("visibility", "visible");
@@ -455,6 +683,11 @@
          dataType: "json",
          success : function(data, textStatus, jqXHR) {
           $('#datatable-responsive').DataTable({
+            "columnDefs": [ {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<button>Click!</button>"
+            } ],
            "data": data,
            "columns" : [ {
              "data" : "NumDoc"
@@ -466,9 +699,12 @@
              "data" : "TotalMerc"
            },{
              "data" : "Data"
+           },{
+             "data" : ""
            }
            ]
          });
+
 
 
           $('#loading2').css("visibility", "hidden");
@@ -476,17 +712,9 @@
         }
       });
 
-
-        console.log(start.toISOString().slice(0,-1), end.toISOString(), label);
       });
 
-      $('#reservation-time').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        locale: {
-          format: 'DD/MM/YYYY h:mm A'
-        }
-      });
+
     });
   </script>
 </body>
