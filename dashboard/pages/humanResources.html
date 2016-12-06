@@ -145,315 +145,504 @@
                   <br />
                   <div class="row">
 
-                    <div class="x_content">
-                      <p class="text-muted font-13 m-b-30">
-                        Summary of all Emloyees
-                      </p>
-                      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                        <thead>
-                          <tr>
-                            <th>Cod Funcionario</th>
-                            <th>Nome Funcionario</th>
-                            <th>Ordenado Mensal</th>
-                            <th>Horas Mensais</th>
-                          </tr>
-                        </thead>
-                        <tbody id="employees_table_body">
-                        </tbody>
-                      </table>
+                   <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Género</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <canvas id="pieChart"></canvas>
+                      </div>
                     </div>
-
-
-                    <!--   <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                        <div class="x_panel fixed_height_390">
-                          <div class="x_title">
-                          <h2>Payments</h2>
-                           <ul class="nav navbar-right panel_toolbox">
-                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Settings 1</a>
-                                  </li>
-                                  <li><a href="#">Settings 2</a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                          </div>
-                          <div class="x_content">
-
-                            <div style="text-align: center; overflow: hidden; margin: 10px 5px 0;">
-                              <canvas id="canvas_line1" height="200"></canvas>
-                            </div>
-
-                            <div style="text-align: center; margin-bottom: 15px;">
-                              <div class="btn-group" role="group" aria-label="First group">
-                                <button type="button" class="btn btn-default btn-sm">Day</button>
-                                <button type="button" class="btn btn-default btn-sm">Month</button>
-                                <button type="button" class="btn btn-default btn-sm">Year</button>
-                              </div>
-                            </div>
-
-                            <div>
-                              <ul class="list-inline widget_tally">
-                                <li>
-                                  <p>
-                                    <span class="month">12 December 2014 </span>
-                                    <span class="count">+12%</span>
-                                  </p>
-                                </li>
-                                <li>
-                                  <p>
-                                    <span class="month">29 December 2014 </span>
-                                    <span class="count">+12%</span>
-                                  </p>
-                                </li>
-                                <li>
-                                  <p>
-                                    <span class="month">16 January 2015 </span>
-                                    <span class="count">+12%</span>
-                                  </p>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div> -->
-
-
-
-                      <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                        <div class="x_panel">
-                          <div class="x_title">
-                            <h2>Payments</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <!--<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Settings 1</a>
-                                  </li>
-                                  <li><a href="#">Settings 2</a>
-                                  </li>
-                                </ul>
-                              </li>-->
-                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                          </div>
-                          <div class="x_content">
-                            <div style="text-align: center; margin-bottom: 17px">
-                              <span class="chart" data-percent="86">
-                                <span class="percent"></span>
-                              </span>
-                            </div>
-                            <div class="pie_bg" style="text-align: center; display: none; margin-bottom: 17px">
-                              <canvas id="canvas_doughnut" height="130"></canvas>
-                            </div>
-                            <div style="text-align: center;">
-                              <div class="btn-group" role="group" aria-label="First group">
-                                <button type="button" class="btn btn-default btn-sm">1 D</button>
-                                <button type="button" class="btn btn-default btn-sm">1 W</button>
-                                <button type="button" class="btn btn-default btn-sm">1 M</button>
-                                <button type="button" class="btn btn-default btn-sm">1 Y</button>
-                              </div>
-                            </div>
-                            <div style="text-align: center; overflow: hidden; margin: 10px 5px 3px;">
-                              <canvas id="canvas_line" height="190"></canvas>
-                            </div>
-                          </div>
-                        </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Distrito</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
                       </div>
-
-                      <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="x_panel">
-                          <div class="x_title">
-                            <h2>Employees Gender</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Settings 1</a>
-                                  </li>
-                                  <li><a href="#">Settings 2</a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li><a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                          </div>
-                          <div class="x_content">
-                            <canvas id="pieChart"></canvas>
-                          </div>
-                        </div>
+                      <div class="x_content">
+                        <canvas id="canvasDoughnut"></canvas>
                       </div>
-
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Idade</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                          </li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <canvas id="lineChart"></canvas>
+                      </div>
                     </div>
                   </div>
 
+
+                  <div class="x_content">
+                    <p class="text-muted font-13 m-b-30">
+                      Summary of all Emloyees
+                    </p>
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Cod Funcionario</th>
+                          <th>Nome Funcionario</th>
+                          <th>Ordenado Mensal</th>
+                          <th>Horas Mensais</th>
+                          <th>Sexo</th>
+                          <th>Distrito</th>
+                        </tr>
+                      </thead>
+                      <tbody id="employees_table_body">
+                      </tbody>
+                    </table>
+                  </div>                   
+
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                      <div class="icon">
+                        <i class="glyphicon glyphicon-arrow-up"></i>
+                      </div>
+                      <div class="count" id="ordenadoMaisAlto"></div>
+                      <h1>Ordenado mais alto</h1>
+                      <h2 id="nomeOrdenadoMaisAlto"> </h2>
+                    </div>
+                  </div>
+                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                      <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
+                      </div>
+                      <div class="count" id="ordenadoMaisBaixo"></div>
+                      <h1>Ordenado mais baixo</h1>
+                      <h2 id="nomeOrdenadoMaisBaixo"></h2>
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
       </div>
     </div>
+    <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>    
-    <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- jQuery Sparklines -->
-    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-    <!-- easy-pie-chart -->
-    <script src="../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>
 
-
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- Datatables -->
-    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="../vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
-    <script src="../vendors/jszip/dist/jszip.min.js"></script>
-    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-
-    <!-- chart js -->
-    <!-- <script type="text/javascript" src="js/moment/moment.min.js"></script> -->
-    <!-- <script src="js/chartjs/chart.min.js"></script> -->
-    <!-- bootstrap progress js -->
-    <!-- <script src="js/progressbar/bootstrap-progressbar.min.js"></script> -->
-    <!-- icheck -->
-    <!-- <script src="js/icheck/icheck.min.js"></script> -->
-
-    <!-- <script src="../build/js/custom.min.js"></script> -->
-
-    <!-- pace -->
-    <!-- <script src="js/pace/pace.min.js"></script> -->
-
-    <!-- sparkline -->
-    <!-- <script src="js/sparkline/jquery.sparkline.min.js"></script> -->
-    <!-- easypie -->
-    <!-- <script src="js/easypie/jquery.easypiechart.min.js"></script> -->
-
-    <script>
-     $(document).ready(function() {
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>    
+<!-- Chart.js -->
+<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- jQuery Sparklines -->
+<script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- easy-pie-chart -->
+<script src="../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 
 
-      $.ajax({
-        url: 'http://localhost:49822/api/Funcionarios',
-        dataType: "json",
-        success : function(data, textStatus, jqXHR) {
-          $('#datatable-responsive').DataTable({
-           "data": data,
-           "columns" : [ {
-             "data" : "CodFunc"
-           }, {
-             "data" : "NomeFunc"
-           }, {
-             "data" : "OrdenadoMensal"
-           }, {
-            "data" : "HorasMes"
-          }
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Datatables -->
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+<script src="../vendors/jszip/dist/jszip.min.js"></script>
+<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<!-- chart js -->
+<!-- <script type="text/javascript" src="js/moment/moment.min.js"></script> -->
+<!-- <script src="js/chartjs/chart.min.js"></script> -->
+<!-- bootstrap progress js -->
+<!-- <script src="js/progressbar/bootstrap-progressbar.min.js"></script> -->
+<!-- icheck -->
+<!-- <script src="js/icheck/icheck.min.js"></script> -->
+
+<!-- <script src="../build/js/custom.min.js"></script> -->
+
+<!-- pace -->
+<!-- <script src="js/pace/pace.min.js"></script> -->
+
+<!-- sparkline -->
+<!-- <script src="js/sparkline/jquery.sparkline.min.js"></script> -->
+<!-- easypie -->
+<!-- <script src="js/easypie/jquery.easypiechart.min.js"></script> -->
+
+<script>
+
+ $(document).ready(function() {
+  var feminino = 0; var masculino = 0; var ordenados = 0;
+
+  var Aveiro = 0; var Beja = 0; var Braga = 0; var Braganca = 0; var CasteloBranco = 0; var Coimbra = 0; var Evora = 0; var Faro = 0; var Guarda = 0;
+  var Leiria = 0; var Lisboa = 0; var Portalegre = 0; var Porto = 0; var Santarem = 0; var Setubal = 0; var VianaDoCastelo = 0; var VilaReal = 0;
+  var Viseu = 0; var Madeira = 0;  var Acores = 0; var Ignorado = 0;
+
+  var idades = []; var codigosFunc = [];
+
+  var OrdenadoMaisAlto = 0; var OrdenadoMaisBaixo = 999999; var NomeOrdenadoAlto; var NomeOrdenadoBaixo;
+
+  $.when(ajax1()).done(function(a1){
+   var ctx = document.getElementById("pieChart");
+   var data = {
+    datasets: [{
+      data: [feminino, masculino],
+      backgroundColor: [
+      "#FF00FF",
+      "#3498DB"
+      ],
+          label: 'My cenas' // for legend
+        }],
+        labels: [
+        "Feminino",
+        "Masculino"
+        ]
+      };
+
+      var pieChart = new Chart(ctx, {
+        data: data,
+        type: 'pie',
+        otpions: {
+          legend: true
+        }
+      });
+
+       // Doughnut chart
+       var ctx1 = document.getElementById("canvasDoughnut");
+       var data1 = {
+        labels: [
+        "Ignorado", "Aveiro", "Beja", "Braga", "Braganca", "CasteloBranco", "Coimbra", "Evora", "Faro", "Guarda", "Leiria", "Lisboa", "Portalegre", "Porto", "Santarem", "Setubal", "VianaDoCastelo", "VilaReal", "Viseu", "Acores", "Madeira"
+        ],
+        datasets: [{
+          data: [Ignorado, Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaDoCastelo, VilaReal, Viseu, Acores, Madeira],
+          backgroundColor: [
+          "#34495E",
+          "#B370CF",
+          "#ff471a",
+          "#36CAAB",
+          "#ff1a1a",
+          "#1370CF",
+          "#800080",
+          "#ff9980",
+          "#996633",
+          "#800000",
+          "#006600",
+          "#1aff1a",
+          "#9999ff",
+          "#ff66cc",
+          "#b3b3b3",
+          "#000000",
+          "#ffffff",
+          "#0000ff",
+          "#009933",
+          "#66ff33",
+          "#ffff1a"
+          ],
+          hoverBackgroundColor: [
+          "#34495E",
+          "#B370CF",
+          "#ff471a",
+          "#36CAAB",
+          "#ff1a1a",
+          "#1370CF",
+          "#800080",
+          "#ff9980",
+          "#996633",
+          "#800000",
+          "#006600",
+          "#1aff1a",
+          "#9999ff",
+          "#ff66cc",
+          "#b3b3b3",
+          "#000000",
+          "#ffffff",
+          "#0000ff",
+          "#009933",
+          "#66ff33",
+          "#ffff1a"
           ]
 
+        }]
+      };
+
+      var canvasDoughnut = new Chart(ctx1, {
+        type: 'doughnut',
+        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+        data: data1
+      });
+
+       // Line chart
+       var ctx2 = document.getElementById("lineChart");
+       var lineChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: codigosFunc,
+          datasets: [{
+            label: "Idade",
+            backgroundColor: "rgba(38, 185, 154, 0.31)",
+            borderColor: "rgba(38, 185, 154, 0.7)",
+            pointBorderColor: "rgba(38, 185, 154, 0.7)",
+            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointBorderWidth: 1,
+            data: idades
+          }]
+        },
+      });
+
+     });
+
+  function ajax1(){
+    return $.ajax({
+      url: 'http://localhost:49822/api/Funcionarios',
+      dataType: "json",
+      success : function(data, textStatus, jqXHR) {
+        $('#datatable-responsive').DataTable({
+         "data": data,
+         "columns" : [ {
+           "data" : "CodFunc"
+         }, {
+           "data" : "NomeFunc"
+         }, {
+           "data" : "OrdenadoMensal"
+         }, {
+          "data" : "HorasMes"
+        },
+        {
+          "data" : "Sexo"
+        },
+        {
+          "data" : "Distrito"
+        }
+        ]
+
+      });
+
+        $.each(data, function(i,jsonObject){
+          ordenados += jsonObject.OrdenadoMensal;
+          if(jsonObject.Sexo == "Feminino")
+            feminino+=1;
+          else
+            masculino+=1;
+
+          idades.push(jsonObject.Idade);
+          codigosFunc.push(jsonObject.CodFunc);
+
+          if(jsonObject.OrdenadoMensal > OrdenadoMaisAlto){
+            OrdenadoMaisAlto = jsonObject.OrdenadoMensal;
+            NomeOrdenadoAlto = jsonObject.NomeFunc;
+          }
+
+
+          if(jsonObject.OrdenadoMensal < OrdenadoMaisBaixo){
+            OrdenadoMaisBaixo = jsonObject.OrdenadoMensal;
+            NomeOrdenadoBaixo = jsonObject.NomeFunc;
+          }
+
+          switch(jsonObject.Distrito) {
+            case 'Aveiro':
+            Aveiro+=1;
+            break;
+            case 'Beja':
+            Beja+=1;
+            break;
+            case 'Braga':
+            Braga+=1;
+            break;
+            case 'Braganca':
+            Braganca+=1;
+            break; 
+            case 'Castelo Branco':
+            CasteloBranco+=1;
+            break;
+            case 'Coimbra':
+            Coimbra+=1;
+            break;
+            case 'Evora':
+            Evora+=1;
+            break;
+            case 'Faro':
+            Faro+=1;
+            break;
+            case 'Guarda':
+            Guarda+=1;
+            break;
+            case 'Leiria':
+            Leiria+=1;
+            break;
+            case 'Portalegre':
+            Portalegre+=1;
+            break;
+            case 'Porto':
+            Porto+=1;
+            break;
+            case 'Santarem':
+            Santarem+=1;
+            break;
+            case 'Setubal':
+            Setubal+=1;
+            break;
+            case 'Viana do Castelo':
+            VianaDoCastelo+=1;
+            break;
+            case 'Vila Real':
+            VilaReal+=1;
+            break;
+            case 'Viseu':
+            Viseu+=1;
+            break;
+            case 'Ilha da Madeira':
+            Madeira+=1;
+            break;
+            case 'Ilha de Porto Santo':
+            Madeira+=1;
+            break;
+            case 'Ilha de Santa Maria':
+            Acores+=1;
+            break;
+            case 'Ilha de São Miguel':
+            Acores+=1;
+            break;
+            case 'Ilha Terceira':
+            Acores+=1;
+            break;
+            case 'Ilha da Graciosa':
+            Acores+=1;
+            break;
+            case 'Ilha de São Jorge':
+            Acores+=1;
+            break;
+            case 'Ilha do Pico':
+            Acores+=1;
+            break;
+            case 'Ilha do Faial':
+            Acores+=1;
+            break;
+            case 'Ilha das Flores':
+            Acores+=1;
+            break;
+            case 'Ilha do Corvo':
+            Acores+=1;
+            break;
+          }
         });
+
+          //document.querySelector('.ordenados').innerHTML = ordenados;
+          //$('.ordenados').html(ordenados);
+
+
+          $('#ordenadoMaisAlto').text(OrdenadoMaisAlto);
+          $('#ordenadoMaisBaixo').text(OrdenadoMaisBaixo);
+          $('#nomeOrdenadoMaisAlto').text(NomeOrdenadoAlto);
+          $('#nomeOrdenadoMaisBaixo').text(NomeOrdenadoBaixo);
 
           $('#loading').css("display", "none");
           $('#hiddendiv').css("visibility", "visible");
 
         } });
+  }   
 
+  var handleDataTableButtons = function() {
+    if ($("#datatable-buttons").length) {
+      $("#datatable-buttons").DataTable({
+        dom: "Bfrtip",
+        buttons: [
+        {
+          extend: "copy",
+          className: "btn-sm"
+        },
+        {
+          extend: "csv",
+          className: "btn-sm"
+        },
+        {
+          extend: "excel",
+          className: "btn-sm"
+        },
+        {
+          extend: "pdfHtml5",
+          className: "btn-sm"
+        },
+        {
+          extend: "print",
+          className: "btn-sm"
+        },
+        ],
+        responsive: true
+      });
+    }
+  };
 
-      var handleDataTableButtons = function() {
-        if ($("#datatable-buttons").length) {
-          $("#datatable-buttons").DataTable({
-            dom: "Bfrtip",
-            buttons: [
-            {
-              extend: "copy",
-              className: "btn-sm"
-            },
-            {
-              extend: "csv",
-              className: "btn-sm"
-            },
-            {
-              extend: "excel",
-              className: "btn-sm"
-            },
-            {
-              extend: "pdfHtml5",
-              className: "btn-sm"
-            },
-            {
-              extend: "print",
-              className: "btn-sm"
-            },
-            ],
-            responsive: true
-          });
-        }
-      };
-
-      TableManageButtons = function() {
-        "use strict";
-        return {
-          init: function() {
-            handleDataTableButtons();
-          }
-        };
-      }();
+  TableManageButtons = function() {
+    "use strict";
+    return {
+      init: function() {
+        handleDataTableButtons();
+      }
+    };
+  }();
 
       //  $('#datatable').dataTable();
 
       $('#datatable-keytable').DataTable({
         keys: true
       });
-
-
 
       $('#datatable-scroller').DataTable({
         ajax: "js/datatables/json/scroller-demo.json",
@@ -483,123 +672,16 @@
 
       TableManageButtons.init();
 
-    });
 
-
-
-  </script>
-
-
-  <script>
-    $(function() {
-      $('.chart').easyPieChart({
-        easing: 'easeOutElastic',
-        delay: 3000,
-        barColor: '#26B99A',
-        trackColor: '#fff',
-        scaleColor: false,
-        lineWidth: 20,
-        trackWidth: 16,
-        lineCap: 'butt',
-        onStep: function(from, to, percent) {
-          $(this.el).find('.percent').text(Math.round(percent));
-        }
-      });
-    });
-  </script>
-
-  <script>
-    $(document).ready(function() {
       Chart.defaults.global.legend = {
         enabled: false
       };
-
-      new Chart(document.getElementById("canvas_line"), {
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: "My First dataset",
-            backgroundColor: "rgba(38, 185, 154, 0.31)",
-            borderColor: "rgba(38, 185, 154, 0.7)",
-            pointBorderColor: "rgba(38, 185, 154, 0.7)",
-            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointBorderWidth: 1,
-            data: [31, 74, 6, 39, 20, 85, 7]
-          }, {
-            label: "My Second dataset",
-            backgroundColor: "rgba(3, 88, 106, 0.3)",
-            borderColor: "rgba(3, 88, 106, 0.70)",
-            pointBorderColor: "rgba(3, 88, 106, 0.70)",
-            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(151,187,205,1)",
-            pointBorderWidth: 1,
-            data: [82, 23, 66, 9, 99, 4, 2]
-          }]
-        },
-      });
-
-
-      // Pie chart
-      var ctx = document.getElementById("pieChart");
-      var data = {
-        datasets: [{
-          data: [50, 50],
-          backgroundColor: [
-          "#FF00FF",
-          "#3498DB"
-          ],
-          label: 'My dataset' // for legend
-        }],
-        labels: [
-        "Pink",
-        "Blue"
-        ]
-      };
-
-      var pieChart = new Chart(ctx, {
-        data: data,
-        type: 'pie',
-        otpions: {
-          legend: false
-        }
-      });
-
-
-
-
-      new Chart(document.getElementById("canvas_line4"), {
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-            label: "My First dataset",
-            backgroundColor: "rgba(38, 185, 154, 0.31)",
-            borderColor: "rgba(38, 185, 154, 0.7)",
-            pointBorderColor: "rgba(38, 185, 154, 0.7)",
-            pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointBorderWidth: 1,
-            data: [31, 74, 6, 39, 20, 85, 7]
-          }, {
-            label: "My Second dataset",
-            backgroundColor: "rgba(3, 88, 106, 0.3)",
-            borderColor: "rgba(3, 88, 106, 0.70)",
-            pointBorderColor: "rgba(3, 88, 106, 0.70)",
-            pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(151,187,205,1)",
-            pointBorderWidth: 1,
-            data: [82, 23, 66, 9, 99, 4, 2]
-          }]
-        },
-      });
     });
-  </script>
+
+
+
+
+</script>
 
 </body>
 </html>
