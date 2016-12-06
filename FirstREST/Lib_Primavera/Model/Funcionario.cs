@@ -29,5 +29,20 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+        public string Sexo
+        {
+            get;
+            set;
+        }
+        public string Distrito
+        {
+            get;
+            set;
+        }
+        public double Idade
+        {
+            get;
+            set;
+        }
     }
 }

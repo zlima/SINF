@@ -273,6 +273,7 @@ namespace FirstREST.Lib_Primavera
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
 
+ 
         #region Funcionario
         
         public static List<Model.Funcionario> ListaFuncionarios()
@@ -287,7 +288,7 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT Codigo as CodFunc, Nome as NomeFunc, VencimentoMensal as OrdenadoMensal, HorasSemana as HorasMes FROM  FUNCIONARIOS");
+                objList = PriEngine.Engine.Consulta("SELECT DATEDIFF(dy, DataNascimento, getdate()) as Idade, Funcionarios.Distrito, Distritos.Distrito, Distritos.Descricao as DistritoDesc, Codigo as CodFunc, Nome as NomeFunc, Sexo as SexoFunc, VencimentoMensal as OrdenadoMensal, HorasSemana as HorasMes FROM  FUNCIONARIOS, DISTRITOS WHERE funcionarios.Distrito = distritos.Distrito");
                 while (!objList.NoFim())
 
                 {
@@ -296,8 +297,15 @@ namespace FirstREST.Lib_Primavera
                     func.NomeFunc = objList.Valor("NomeFunc");
                     func.OrdenadoMensal = objList.Valor("OrdenadoMensal");
                     func.HorasMes = objList.Valor("HorasMes");
+                    func.Distrito = objList.Valor("DistritoDesc");
+                    func.Idade = objList.Valor("Idade")/365;
+                    if (objList.Valor("SexoFunc") == "1")
+                        func.Sexo = "Feminino";
+                    else
+                        func.Sexo = "Masculino";
+                   
 
-                    listFuncionarios.Add(func);
+                        listFuncionarios.Add(func);
                     objList.Seguinte();
                 }
 
@@ -314,8 +322,6 @@ namespace FirstREST.Lib_Primavera
         
         #endregion
 
-
-          #region TopCliente
 
         public static List<Model.TopCliente> ListaTopCliente(long nr)
         {
