@@ -255,24 +255,21 @@
                   <!-- Table row -->
                   <div class="row">
                     <div class="col-xs-12 table">
-                      <table class="table table-striped">
+                      <table class="table table-striped" id="invProdTable">
                         <thead>
                           <tr>
                             <th>Qty</th>
                             <th>Product</th>
-                            <th>Serial #</th>
                             <th style="width: 59%">Description</th>
-                            <th>Subtotal</th>
+                            <th>Unit Price</th>
+                            <th>Gross Total</th>
+                            <th>Net Total</th>
+
                           </tr>
+
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Call of Duty</td>
-                            <td>455-981-221</td>
-                            <td>El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
-                            </td>
-                            <td>$64.50</td>                    
+
                         </tbody>
                       </table>
                     </div>
@@ -614,8 +611,31 @@
       $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
       $("#invDue").after(" "+formatData(data.DataVencimento));
 
+  //  id da table #invProdTable
 
-
+  $('#invProdTable').DataTable({
+    "bPaginate": false,
+    "bFilter": false,
+    "bInfo": false,
+    "paging":   false,
+    "ordering": false,
+    "info":     false,
+   "data": data.LinhasDoc,
+   "columns" : [ {
+     "data" : "Quantidade"
+   },{
+     "data" : "CodArtigo"
+   }, {
+     "data" : "DescArtigo"
+   },{
+     "data" : "PrecoUnitario"
+   },{
+     "data" : "TotalILiquido"
+   },{
+     "data" : "TotalLiquido"
+   }
+   ]
+  });
 
 /*
       "Cliente": {
