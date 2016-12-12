@@ -323,6 +323,7 @@ namespace FirstREST.Lib_Primavera
         #endregion
 
 
+        #region TopCliente
         public static List<Model.TopCliente> ListaTopCliente(long nr)
         {
 
@@ -640,7 +641,7 @@ namespace FirstREST.Lib_Primavera
             {
 
 
-                objListCab = PriEngine.Engine.Consulta("SELECT id, Entidade, Data, NumDoc, TotalMerc, Serie, Morada, Localidade, CodPostal, CodPostalLocalidade, DataVencimento From CabecDoc where TipoDoc LIKE '" + typeDoc + "' and Data>='" + dateBegin + "' and Data<='" + dateEnd + "'");
+                objListCab = PriEngine.Engine.Consulta("SELECT id, Entidade, Data, ModoPag ,NumDoc,TotalIva, TotalDesc ,TotalMerc, Serie, Morada, Localidade, CodPostal, CodPostalLocalidade, DataVencimento From CabecDoc where TipoDoc LIKE '" + typeDoc + "' and Data>='" + dateBegin + "' and Data<='" + dateEnd + "'");
                 while (!objListCab.NoFim())
                 {
                     dv = new Model.DocVenda();
@@ -650,7 +651,10 @@ namespace FirstREST.Lib_Primavera
                     dv.Data = objListCab.Valor("Data");
                     dv.TotalMerc = objListCab.Valor("TotalMerc");
                     dv.Serie = objListCab.Valor("Serie");
+                    dv.TotalIva = objListCab.Valor("TotalIva");
                     dv.DataVencimento = objListCab.Valor("DataVencimento");
+                    dv.TotalDesc = objListCab.Valor("TotalDesc");
+                    dv.ModoPag = objListCab.Valor("ModoPag");
                     objListCab2 = PriEngine.Engine.Consulta("SELECT Nome, Fac_Tel , NumContrib, ModoPag, Pais FROM Clientes where Cliente LIKE '"+dv.Entidade+"'");
                     cf=new Model.ClienteFac();
                     cf.Nome = objListCab2.Valor("Nome");
@@ -663,7 +667,7 @@ namespace FirstREST.Lib_Primavera
                     cf.CodPostalLocalidade = objListCab.Valor("CodPostalLocalidade");
 
                     
-                    objListLin = PriEngine.Engine.Consulta("SELECT idCabecDoc, Artigo, Descricao, Quantidade, Unidade, PrecUnit, Desconto1, TotalILiquido, PrecoLiquido from LinhasDoc where IdCabecDoc='" + dv.id + "' order By NumLinha");
+                    objListLin = PriEngine.Engine.Consulta("SELECT idCabecDoc, Artigo, Descricao, TaxaIva ,Quantidade, Unidade, PrecUnit, Desconto1, TotalILiquido, PrecoLiquido from LinhasDoc where IdCabecDoc='" + dv.id + "' order By NumLinha");
                     listlindv = new List<Model.LinhaDocVenda>();
 
                     while (!objListLin.NoFim())
@@ -678,6 +682,7 @@ namespace FirstREST.Lib_Primavera
                         lindv.PrecoUnitario = objListLin.Valor("PrecUnit");
                         lindv.TotalILiquido = objListLin.Valor("TotalILiquido");
                         lindv.TotalLiquido = objListLin.Valor("PrecoLiquido");
+                        lindv.TaxaIva = objListLin.Valor("TaxaIva");
                         
 
                         listlindv.Add(lindv);

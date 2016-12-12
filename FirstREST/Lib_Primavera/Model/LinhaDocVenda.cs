@@ -65,6 +65,14 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+          public double TaxaIva
+          {
+              get;
+              set;
+          }
+
+          
+
          
 
 

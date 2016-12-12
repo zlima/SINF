@@ -62,5 +62,22 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public double TotalIva
+        {
+            get;
+            set;
+        }
+        public double TotalDesc
+        {
+            get;
+            set;
+        }
+
+        public string ModoPag
+        {
+            get;
+            set;
+        }
+
     }
 }
