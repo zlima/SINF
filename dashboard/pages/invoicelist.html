@@ -197,6 +197,31 @@
                 </ul>
                 <div class="clearfix"></div>
               </div>
+
+              <div class="x_content" id="invoicelistcontent">
+                <p class="text-muted font-13 m-b-30">
+                  Summary of Invoices
+                </p>
+                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th>NumDoc</th>
+                      <th>Serie</th>
+                      <th>Entidade</th>
+                      <th>Total Merc</th>
+                      <th>Date</th>
+                      <th>Expand</th>
+                    </tr>
+                  </thead>
+                  <tbody id="clients_table_body">
+
+
+                  </tbody>
+                </table>
+                <br>
+
+              </div>
+
               <!--invoice html -->
               <div class="x_content" id="invoicecontent" style="display:none;">
 
@@ -260,10 +285,12 @@
                           <tr>
                             <th>Qty</th>
                             <th>Product</th>
-                            <th style="width: 59%">Description</th>
-                            <th>Unit Price</th>
-                            <th>Gross Total</th>
-                            <th>Net Total</th>
+                            <th style="width: 40%">Description</th>
+                            <th>Unit Price(€)</th>
+                            <th>Net Total(€)</th>
+                            <th>Tax IVA(%)</th>
+                            <th>Gross Total(€)</th>
+
 
                           </tr>
 
@@ -281,35 +308,31 @@
                     <!-- accepted payments column -->
                     <div class="col-xs-6">
                       <p class="lead">Payment Methods:</p>
-                      <img src="images/visa.png" alt="Visa">
-                      <img src="images/mastercard.png" alt="Mastercard">
-                      <img src="images/american-express.png" alt="American Express">
-                      <img src="images/paypal.png" alt="Paypal">
-                      <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                      <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;" id="ModoPag">
+
                       </p>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-6">
-                      <p class="lead">Amount Due 2/22/2014</p>
+                      <p class="lead" id="amountdue"></p>
                       <div class="table-responsive">
                         <table class="table">
                           <tbody>
                             <tr>
                               <th style="width:50%">Subtotal:</th>
-                              <td>$250.30</td>
+                              <td id="subtotal"></td>
                             </tr>
                             <tr>
-                              <th>Tax (9.3%)</th>
-                              <td>$10.34</td>
+                              <th>Tax Iva</th>
+                              <td id="totalIva"></td>
                             </tr>
                             <tr>
-                              <th>Shipping:</th>
-                              <td>$5.80</td>
+                              <th>Total Desc: </th>
+                              <td id="totalDesc"></td>
                             </tr>
                             <tr>
                               <th>Total:</th>
-                              <td>$265.24</td>
+                              <td id="total"></td>
                             </tr>
                           </tbody>
                         </table>
@@ -323,36 +346,12 @@
                   <div class="row no-print">
                     <div class="col-xs-12">
                       <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                      <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                      <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-                    </div>
+                      </div>
                   </div>
                 </section>
               </div>
               <!-- end invoice -->
-              <div class="x_content" id="invoicelistcontent">
-                <p class="text-muted font-13 m-b-30">
-                  Summary of Invoices
-                </p>
-                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                  <thead>
-                    <tr>
-                      <th>NumDoc</th>
-                      <th>Serie</th>
-                      <th>Entidade</th>
-                      <th>Total Merc</th>
-                      <th>Date</th>
-                      <th>Expand</th>
-                    </tr>
-                  </thead>
-                  <tbody id="clients_table_body">
 
-
-                  </tbody>
-                </table>
-                <br>
-
-              </div>
             </div>
             <div class="sk-fading-circle" id="loading2" style="visibility:hidden">
               <div class="sk-circle1 sk-circle"></div>
@@ -463,7 +462,7 @@
         "columnDefs": [ {
             "targets": -1,
             "data": null,
-            "defaultContent": "<div style='text-align:center;'><button><i class='fa fa-expand'></i></button><div>"
+            "defaultContent": "<div style='text-align:center;'><button id='buttontab'><i class='fa fa-expand'></i></button><div>"
         } ],
         "data":data,
        "columns" : [ {
@@ -489,7 +488,7 @@
   });
 
 //codigo do expand
-  $('#datatable-responsive tbody').on( 'click', 'button', function () {
+  $('#datatable-responsive tbody').on( 'click', '#buttontab', function () {
           var data = $('#datatable-responsive').DataTable().row( $(this).parents('tr') ).data();
 
 
@@ -610,6 +609,11 @@
       $("#invTelef").after("Phone: "+data.Cliente.Telefone);
       $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
       $("#invDue").after(" "+formatData(data.DataVencimento));
+      $('#totalIva').text(data.TotalIva +" €");
+      $('#totalDesc').text(data.TotalDesc +" €");
+      $('#ModoPag').text(data.ModoPag);
+      $('#amountdue').text("Amount Due: "+formatData(data.DataVencimento));
+
 
   //  id da table #invProdTable
 
@@ -630,12 +634,17 @@
    },{
      "data" : "PrecoUnitario"
    },{
-     "data" : "TotalILiquido"
+    "data" : "TotalLiquido"
    },{
-     "data" : "TotalLiquido"
+     "data" : "TaxaIva"
+   },{
+     "data" : "TotalILiquido"
    }
    ]
   });
+
+  $("#subtotal").text(calcSubtotal(data.LinhasDoc)+" €");
+  $("#total").text(calcTotal(data.LinhasDoc)+" €");
 
 /*
       "Cliente": {
@@ -647,6 +656,24 @@
       "Pais": "PT"
     }*/
 
+    }
+
+    var calcSubtotal = function(data){
+      var total=0;
+      data.forEach(function(item) {
+    // do something with `item`
+        total+=item.TotalLiquido
+        });
+    return total
+    }
+
+    var calcTotal = function(data){
+      var total=0;
+      data.forEach(function(item) {
+    // do something with `item`
+        total+=item.TotalILiquido
+        });
+    return total
     }
 
 
@@ -664,7 +691,11 @@
 }, function(start, end, label) {
 
         $('#test').click();
+        $('#invoicelistcontent').css("display", "none");
+        $('#invoicecontent').css("display", "none");
+
         $('#loading2').css("visibility", "visible");
+
 
         $('#datatable-responsive').DataTable().destroy()
 
@@ -684,7 +715,7 @@
             "columnDefs": [ {
                 "targets": -1,
                 "data": null,
-                "defaultContent": "<button>Click!</button>"
+                "defaultContent": "<div style='text-align:center;'><button id='buttontab'><i class='fa fa-expand'></i></button><div>"
             } ],
            "data": data,
            "columns" : [ {
@@ -706,7 +737,10 @@
 
 
           $('#loading2').css("visibility", "hidden");
+
           $('#test').click();
+          $('#invoicecontent').css("display", "none");
+          $('#invoicelistcontent').css("visibility", "visible");
         }
       });
 
