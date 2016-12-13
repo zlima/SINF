@@ -643,8 +643,9 @@
    ]
   });
 
-  $("#subtotal").text(calcSubtotal(data.LinhasDoc)+" €");
-  $("#total").text(calcTotal(data.LinhasDoc)+" €");
+
+  $("#subtotal").text(data.TotalMerc + " €");
+  $("#total").text(calcTotal(data) +" €");
 
 /*
       "Cliente": {
@@ -669,11 +670,11 @@
 
     var calcTotal = function(data){
       var total=0;
-      data.forEach(function(item) {
-    // do something with `item`
-        total+=item.TotalILiquido
-        });
-    return total
+      total += data.TotalMerc + data.TotalIva - data.TotalDesc;
+
+      var total1 = Math.round(total * 100) / 100;
+
+    return total1
     }
 
 
