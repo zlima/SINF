@@ -178,6 +178,68 @@
 
           
         </div>
+
+        <div class="row">
+              <div class="col-md-12">
+                <div class="">
+                  <div class="x_content">
+                    <div class="row">
+
+                      <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="glyphicon glyphicon-arrow-up"></i>
+                          </div>
+                          <div class="count" id="totalIncome"></div>
+
+                          <h3>Total Income</h3>
+                          <p>Lorem ipsum psdea itgum rixt.</p>
+                        </div>
+                      </div>
+                      <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
+                          </div>
+                          <div class="count" id="totalOutcome"></div>
+
+                          <h3>Total Outcome</h3>
+                          <p>Lorem ipsum psdea itgum rixt.</p>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                    <div class="row top_tiles" style="margin: 10px 0;">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="tile-stats" id="cenas">
+                        <div class="icon"><i class="glyphicon glyphicon-plus"></i>
+                        </div>
+                        <div class="count" id="hstockid"></div>
+
+                        <h3>Debit</h3>
+                        <p id="hstockqt"></p>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="tile-stats">
+                        <div class="icon"><i class="glyphicon glyphicon-minus"></i>
+                        </div>
+                        <div class="count" id="lstockid"></div>
+
+                        <h3>Account Receivables</h3>
+                        <p id="lstockqt"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <br />
+              </div>
+            </div>
+          </div>
       </div>
       <!-- /page content -->
 
@@ -238,8 +300,11 @@
      else return num;
    }
 
-   $.when(ajax1(), getMonth(), getYear()).done(function(a1, month, year){
+   $.when(ajax1(), ajax2(), ajax3(), getMonth(), getYear()).done(function(a1, totalIncome, totalOutcome, month, year){
     //alert(month);
+
+  
+
     var i; var year1 = year; var month1 = month;
     var months = [];
     var years = [];
@@ -260,7 +325,9 @@
 
     //alert(month); alert(year);
    // alert(a1[0].Valor);
-    $('#totalIncome').text(a1);
+    $('#totalIncome').text(kFormatter(totalIncome[0][0].Valor));
+    $('#totalOutcome').text(kFormatter(totalOutcome[0][0].Valor));
+
 
 
     var originalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -306,6 +373,19 @@
 });
 
 
+   function ajax2() {
+    return $.ajax({
+      url: 'http://localhost:49822/api/totalIncome',
+      dataType: "json",        
+   });
+ }
+
+   function ajax3() {
+    return $.ajax({
+      url: 'http://localhost:49822/api/totalOutcome',
+      dataType: "json",        
+   });
+ }
 
    function ajax1() {
     return $.ajax({ 
