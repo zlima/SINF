@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>DataTables | Gentellela</title>
+  <title>Clients</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -278,7 +278,7 @@
      });
 
      function ajax1() {
-      return $.ajax({ 
+      return $.ajax({
         url: 'http://localhost:49822/api/Clientes',
         dataType: "json",
         success : function(data, textStatus, jqXHR) {
@@ -307,7 +307,7 @@
     }
 
     function ajax2() {
-      return $.ajax({ 
+      return $.ajax({
         url: 'http://localhost:49822/api/TopClientes?nr=1',
         dataType: "json"
       });
