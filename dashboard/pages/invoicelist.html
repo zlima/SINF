@@ -256,10 +256,10 @@
 
 
                                       <strong id="invIden"></strong>
-                                      <br id="invMor">
-                                      <br id="invPais">
-                                      <br id="invTelef">
-                                      <br id="invContr">
+                                      <br><span id="invMor"></span>
+                                      <br><span id="invPais"></span>
+                                      <br><span id="invTelef"></span>
+                                      <br><span id="invContr"></span>
                                   </address>
                     </div>
                     <!-- /.col -->
@@ -267,9 +267,9 @@
                       <b id="invNo"></b>
                       <br>
                       <br>
-                      <b id="invSerie">Serie: </b>
+                      <b id="invSerie"></b>
                       <br>
-                      <b id="invDue">Payment Due:</b>
+                      <b id="invDue"></b>
                       <br>
                     <!--  <b>Account:</b> 968-34567-->
                     </div>
@@ -596,26 +596,26 @@
 
   var  populateInvoice = function(data){
 
-
+  $('#invProdTable').DataTable().destroy();
 
 
       $('#invdate').text("Date: "+formatData(data.Data));
 
       $('#invNo').text("Invoice #"+data.NumDoc);
-      $("#invSerie").after(data.Serie);
+      $("#invSerie").text("Serie: " + data.Serie);
       $("#invIden").text(data.Cliente.Nome);
-      $("#invMor").after(data.Cliente.Morada);
-      $("#invPais").after(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
-      $("#invTelef").after("Phone: "+data.Cliente.Telefone);
-      $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
-      $("#invDue").after(" "+formatData(data.DataVencimento));
+      $("#invMor").text(data.Cliente.Morada);
+      $("#invPais").text(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
+      $("#invTelef").text("Phone: "+data.Cliente.Telefone);
+      $("#invContr").text("Contribuinte: "+data.Cliente.NumContribuinte);
+      $("#invDue").text("Payment Due: "+formatData(data.DataVencimento));
       $('#totalIva').text(data.TotalIva +" €");
       $('#totalDesc').text(data.TotalDesc +" €");
       $('#ModoPag').text(data.ModoPag);
       $('#amountdue').text("Amount Due: "+formatData(data.DataVencimento));
 
 
-  //  id da table #invProdTable
+  //  id da table #invProdTableF
 
   $('#invProdTable').DataTable({
     "bPaginate": false,
