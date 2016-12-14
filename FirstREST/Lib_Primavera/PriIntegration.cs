@@ -333,7 +333,7 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Entidade as CodCliente, Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Entidade, Morada ORDER BY RendimentoCliente DESC");    
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Entidade as CodCliente, Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente, sum(TotalIva) as iva, sum(TotalDesc) as desc FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Entidade, Morada ORDER BY RendimentoCliente DESC");    
                 while (!objList.NoFim())
 
                 {
@@ -341,7 +341,7 @@ namespace FirstREST.Lib_Primavera
                     tc.CodCliente = objList.Valor("CodCliente");
                     tc.NomeCliente = objList.Valor("NomeCliente");
                     tc.MoradaCliente = objList.Valor("MoradaCliente");
-                    tc.RendimentoCliente= objList.Valor("RendimentoCliente");
+                    tc.RendimentoCliente = objList.Valor("RendimentoCliente") + objList.Valor("iva") - objList.Valor("desc");
 
                     listTC.Add(tc);
                     objList.Seguinte();
@@ -1330,7 +1330,7 @@ namespace FirstREST.Lib_Primavera
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
                 objList = PriEngine.Engine.Consulta("SELECT (SELECT SUM(TotalDeb) FROM Clientes) as accountsreceivable,(SELECT SUM(EncomendasPendentes) FROM Clientes) as var3,( SELECT ABS(SUM(TotalDeb)) FROM Fornecedores WHERE TotalDeb < 0) as accountspayable, (SELECT COUNT(Cliente) FROM Clientes WHERE DATEDIFF(dy, DataCriacao, getdate()) <= 90) as countcli, (SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL') as totalorders, (SELECT SUM(EncomendasPendentes) FROM Fornecedores WHERE TotalDeb < 0 ) as var2 ");
-                objList3 = PriEngine.Engine.Consulta("SELECT TOP 5 Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Morada ORDER BY RendimentoCliente DESC");    
+                objList3 = PriEngine.Engine.Consulta("SELECT TOP 5 Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc+TotalIva-TotalDesc) as RendimentoCliente FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Morada ORDER BY RendimentoCliente DESC");    
                 objList2 = PriEngine.Engine.Consulta(" SELECT ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-3,GETDATE())) as CountOrders, ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-6,GETDATE())) as CountOrdersb");
                 objList4 = PriEngine.Engine.Consulta("SELECT TOP 7 Artigo.Familia as Categoria, Familias.Descricao, SUM(PrecoLiquido) as totalCat FROM LinhasDoc LEFT JOIN CabecDoc ON LinhasDoc.IdCabecDoc=CabecDoc.ID LEFT JOIN Artigo ON LinhasDoc.Artigo = Artigo.Artigo LEFT JOIN Familias on Artigo.Familia = Familias.Familia WHERE CabecDoc.TipoDoc = 'FA' AND Artigo.Artigo <> 'NULL' AND Artigo.Familia <> 'NULL' group by Artigo.Familia, Familias.Descricao order by totalCat desc");
                 objList5 = PriEngine.Engine.Consulta("SELECT TOP 5 LinhasDoc.Artigo, Artigo.Descricao as NomeArtigo, sum(Quantidade) AS QuantidadeArtigo FROM LinhasDoc LEFT JOIN CabecDoc on LinhasDoc.IdCabecDoc = CabecDoc.Id left join Artigo on LinhasDoc.Artigo = Artigo.Artigo WHERE CabecDoc.TipoDoc = 'FA' AND LinhasDoc.Artigo <> 'NULL' Group by LinhasDoc.Artigo, Artigo.Descricao ORDER BY QuantidadeArtigo DESC");
