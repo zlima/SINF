@@ -1,492 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables | Gentellela</title>
+  <title>DataTables | Gentellela</title>
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- Datatables -->
-    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+  <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <!-- Ion.RangeSlider -->
-    <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
-    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
-    <!-- Bootstrap Colorpicker -->
-    <link href="../vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+  <!-- bootstrap-daterangepicker -->
+  <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+  <!-- Ion.RangeSlider -->
+  <link href="../vendors/normalize-css/normalize.css" rel="stylesheet">
+  <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+  <link href="../vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+  <!-- Bootstrap Colorpicker -->
+  <link href="../vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
-    <link href="../vendors/cropper/dist/cropper.min.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="../build/css/loadingcss.css" rel="stylesheet">
+  <link href="../vendors/cropper/dist/cropper.min.css" rel="stylesheet">
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/loadingcss.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="clients.html" class="site_title"><i class="fa"><img src="images/icon.png" height="25" width="25"></i> <span>Loja XPTO!</span></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html"><i class="fa fa-laptop"></i>Overview</a></li>
-                      <li><a href="clients.html"><i class="fa fa-user"></i>Clients</a></li>
-                      <li><a href="suppliers.html"><i class="fa fa-user"></i>Suppliers</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Sales <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="invoicelist.html"><i class="fa fa-file-text"></i>Invoice List</a></li>
-                      <li><a href="orders.html"><i class="fa fa-file-text"></i>Orders</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-group"></i> Human Resources <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="humanResources.html">Employees</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-table"></i> Financial and Accounting <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="financial.html">Financial</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Supply Chain <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                       <li><a href="produtos.html"><i class="fa fa-dropbox"></i>Products</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
-              </div>
-
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="clients.html" class="site_title"><i class="fa"><img src="images/icon.png" height="25" width="25"></i> <span>Loja XPTO!</span></a>
           </div>
-        </div>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Invoice List </h3>
-              </div>
-
-
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="sk-fading-circle" id="loading">
-    <div class="sk-circle1 sk-circle"></div>
-    <div class="sk-circle2 sk-circle"></div>
-    <div class="sk-circle3 sk-circle"></div>
-    <div class="sk-circle4 sk-circle"></div>
-    <div class="sk-circle5 sk-circle"></div>
-    <div class="sk-circle6 sk-circle"></div>
-    <div class="sk-circle7 sk-circle"></div>
-    <div class="sk-circle8 sk-circle"></div>
-    <div class="sk-circle9 sk-circle"></div>
-    <div class="sk-circle10 sk-circle"></div>
-    <div class="sk-circle11 sk-circle"></div>
-    <div class="sk-circle12 sk-circle"></div>
-  </div>
-
-            <div class="row" id="hiddendiv" style="visibility:hidden">
-
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title pull-right">
-
-                    <ul class="nav navbar-right panel_toolbox">
-
-                      <div class="col-md-4 col-md-offset-7">
-                        <form class="form-horizontal">
-                          <fieldset>
-                            <div class="control-group">
-                              <div class="controls">
-                                <div class="input-prepend input-group">
-                                  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="02/01/2015 - 01/25/2016" />
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </form>
-                      </div>
-
-                      <li><a class="collapse-link" id="test"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p class="text-muted font-13 m-b-30">
-                      Summary of Invoices
-                    </p>
-                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
-                        <tr>
-                        <th>NumDoc</th>
-                        <th>Serie</th>
-                         <th>Entidade</th>
-                          <th>Total Merc</th>
-                          <th>Date</th>
-                        </tr>
-                      </thead>
-                      <tbody id="clients_table_body">
-
-
-                      </tbody>
-                    </table>
-                    <br>
-
-</div>
-</div>
-<div class="sk-fading-circle" id="loading2" style="visibility:hidden">
-<div class="sk-circle1 sk-circle"></div>
-<div class="sk-circle2 sk-circle"></div>
-<div class="sk-circle3 sk-circle"></div>
-<div class="sk-circle4 sk-circle"></div>
-<div class="sk-circle5 sk-circle"></div>
-<div class="sk-circle6 sk-circle"></div>
-<div class="sk-circle7 sk-circle"></div>
-<div class="sk-circle8 sk-circle"></div>
-<div class="sk-circle9 sk-circle"></div>
-<div class="sk-circle10 sk-circle"></div>
-<div class="sk-circle11 sk-circle"></div>
-<div class="sk-circle12 sk-circle"></div>
-</div>
- <div class="clearfix"></div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
           <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="index.html"><i class="fa fa-laptop"></i>Overview</a></li>
+                    <li><a href="clients.html"><i class="fa fa-user"></i>Clients</a></li>
+                    <li><a href="suppliers.html"><i class="fa fa-user"></i>Suppliers</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> Sales <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="invoicelist.html"><i class="fa fa-file-text"></i>Invoice List</a></li>
+                    <li><a href="orders.html"><i class="fa fa-file-text"></i>Orders</a></li>
+
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-group"></i> Human Resources <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="humanResources.html">Human Resources</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-table"></i> Financial and Accounting <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="financial.html">Financial</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-bar-chart-o"></i> Supply Chain <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                   <li><a href="produtos.html"><i class="fa fa-dropbox"></i>Products</a></li>
+                 </ul>
+               </li>
+
+             </ul>
+           </div>
+
+
+         </div>
+         <!-- /sidebar menu -->
+
+         <!-- /menu footer buttons -->
+         <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
 
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- Datatables -->
-    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="../vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
-    <script src="../vendors/jszip/dist/jszip.min.js"></script>
-    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- Ion.RangeSlider -->
-    <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
-    <!-- Bootstrap Colorpicker -->
-    <script src="../vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-    <!-- jquery.inputmask -->
-    <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-    <!-- jQuery Knob -->
-    <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
-    <!-- Cropper -->
-    <script src="../vendors/cropper/dist/cropper.min.js"></script>
-     <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- jQuery Sparklines -->
-    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-
-    <!-- Datatables -->
-    <script>
-      $(document).ready(function() {
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3>Invoice List </h3>
+          </div>
 
 
-        var currentDate = new Date();
-        var day = (currentDate.getDate() < 10 ? '0' : '') + currentDate.getDate();
-        var month = ((currentDate.getMonth() + 1) < 10 ? '0' : '') + (currentDate.getMonth() + 1);
-        var year = currentDate.getFullYear();
+        </div>
 
-        var sqldate= year.toString()+'-'+month.toString()+'-'+day.toString()+'T00:00:00';
+        <div class="clearfix"></div>
 
-        $('#reservation').attr("value",'02/01/2015 - '+day+'/'+month+'/'+year+'');
+        <div class="sk-fading-circle" id="loading">
+          <div class="sk-circle1 sk-circle"></div>
+          <div class="sk-circle2 sk-circle"></div>
+          <div class="sk-circle3 sk-circle"></div>
+          <div class="sk-circle4 sk-circle"></div>
+          <div class="sk-circle5 sk-circle"></div>
+          <div class="sk-circle6 sk-circle"></div>
+          <div class="sk-circle7 sk-circle"></div>
+          <div class="sk-circle8 sk-circle"></div>
+          <div class="sk-circle9 sk-circle"></div>
+          <div class="sk-circle10 sk-circle"></div>
+          <div class="sk-circle11 sk-circle"></div>
+          <div class="sk-circle12 sk-circle"></div>
+        </div>
+
+        <div class="row" id="hiddendiv" style="visibility:hidden">
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title pull-right">
+
+                <ul class="nav navbar-right panel_toolbox">
+
+                  <div class="col-md-4 col-md-offset-7">
+                    <form class="form-horizontal">
+                      <fieldset>
+                        <div class="control-group">
+                          <div class="controls">
+                            <div class="input-prepend input-group">
+                              <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                              <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control"  value="01/05/2015 - 12/31/2015" />
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+
+                  <li><a class="collapse-link" id="test"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content" id="invoicelistcontent">
+                <p class="text-muted font-13 m-b-30">
+                  Summary of Invoices
+                </p>
+                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th>NumDoc</th>
+                      <th>Serie</th>
+                      <th>Entidade</th>
+                      <th>Total Merc</th>
+                      <th>Date</th>
+                      <th>Expand</th>
+                    </tr>
+                  </thead>
+                  <tbody id="clients_table_body">
+
+
+                  </tbody>
+                </table>
+                <br>
+
+              </div>
+
+              <!--invoice html -->
+              <div class="x_content" id="invoicecontent" style="display:none;">
+
+                <section class="content invoice">
+                  <!-- title row -->
+                  <div class="row">
+                    <div class="col-xs-12 invoice-header">
+                      <h1>
+                                      <i class="fa fa-globe"></i> Invoice.
+                                      <small class="pull-right" id="invdate"></small>
+                                  </h1>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- info row -->
+                  <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                      From
+                      <address>
+                                      <strong>Loja Xpto, Inc.</strong>
+                                      <br>Rua Dr. Roberto Frias 600
+                                      <br>Porto, Portugal 4200-465
+                                      <br>Phone: (+351) 225081400
+                                      <br>Email: xpto@fe.up.com
+                                  </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                      To
+                      <address>
+
+
+
+                                      <strong id="invIden"></strong>
+                                      <br id="invMor">
+                                      <br id="invPais">
+                                      <br id="invTelef">
+                                      <br id="invContr">
+                                  </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                      <b id="invNo"></b>
+                      <br>
+                      <br>
+                      <b id="invSerie">Serie: </b>
+                      <br>
+                      <b id="invDue">Payment Due:</b>
+                      <br>
+                    <!--  <b>Account:</b> 968-34567-->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <!-- Table row -->
+                  <div class="row">
+                    <div class="col-xs-12 table">
+                      <table class="table table-striped" id="invProdTable">
+                        <thead>
+                          <tr>
+                            <th>Qty</th>
+                            <th>Product</th>
+                            <th style="width: 40%">Description</th>
+                            <th>Unit Price(€)</th>
+                            <th>Net Total(€)</th>
+                            <th>Tax IVA(%)</th>
+                            <th>Gross Total(€)</th>
+
+
+                          </tr>
+
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-6">
+                      <p class="lead">Payment Methods:</p>
+                      <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;" id="ModoPag">
+
+                      </p>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-6">
+                      <p class="lead" id="amountdue"></p>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th style="width:50%">Subtotal:</th>
+                              <td id="subtotal"></td>
+                            </tr>
+                            <tr>
+                              <th>Tax Iva</th>
+                              <td id="totalIva"></td>
+                            </tr>
+                            <tr>
+                              <th>Total Desc: </th>
+                              <td id="totalDesc"></td>
+                            </tr>
+                            <tr>
+                              <th>Total:</th>
+                              <td id="total"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+                  <!-- this row will not appear when printing -->
+                  <div class="row no-print">
+                    <div class="col-xs-12">
+                      <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                      </div>
+                  </div>
+                </section>
+              </div>
+              <!-- end invoice -->
+
+            </div>
+            <div class="sk-fading-circle" id="loading2" style="visibility:hidden">
+              <div class="sk-circle1 sk-circle"></div>
+              <div class="sk-circle2 sk-circle"></div>
+              <div class="sk-circle3 sk-circle"></div>
+              <div class="sk-circle4 sk-circle"></div>
+              <div class="sk-circle5 sk-circle"></div>
+              <div class="sk-circle6 sk-circle"></div>
+              <div class="sk-circle7 sk-circle"></div>
+              <div class="sk-circle8 sk-circle"></div>
+              <div class="sk-circle9 sk-circle"></div>
+              <div class="sk-circle10 sk-circle"></div>
+              <div class="sk-circle11 sk-circle"></div>
+              <div class="sk-circle12 sk-circle"></div>
+            </div>
+            <div class="clearfix"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Datatables -->
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+<script src="../vendors/jszip/dist/jszip.min.js"></script>
+<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../vendors/moment/min/moment.min.js"></script>
+<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Ion.RangeSlider -->
+<script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+<!-- Bootstrap Colorpicker -->
+<script src="../vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- jquery.inputmask -->
+<script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<!-- jQuery Knob -->
+<script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- Cropper -->
+<script src="../vendors/cropper/dist/cropper.min.js"></script>
+<!-- Chart.js -->
+<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- jQuery Sparklines -->
+<script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<!-- Datatables -->
+<script>
+  $(document).ready(function() {
+
+
+    var currentDate = new Date();
+    var day = (currentDate.getDate() < 10 ? '0' : '') + currentDate.getDate();
+    var month = ((currentDate.getMonth() + 1) < 10 ? '0' : '') + (currentDate.getMonth() + 1);
+    var year = currentDate.getFullYear();
+
+    var sqldate= year.toString()+'-'+month.toString()+'-'+day.toString()+'T00:00:00';
+
+    $('#reservation').attr("value",'01/06/2016 - '+day+'/'+month+'/'+year+'');
 
     $.ajax({
-        url: 'http://localhost:49822/api/DocVenda',
-        data:{
-       typeDoc: 'ECL',
-       dateBegin: '2015-01-02T00:00:00',
+      url: 'http://localhost:49822/api/DocVenda',
+      data:{
+       typeDoc: 'FA',
+       dateBegin: '2016-06-01T00:00:00',
        dateEnd: sqldate
-    },
+     },
 
-        dataType: "json",
-        success : function(data, textStatus, jqXHR) {
-          $('#datatable-responsive').DataTable({
-             "data": data,
-             "columns" : [ {
-                 "data" : "NumDoc"
-             },{
-                 "data" : "Serie"
-             }, {
-                 "data" : "Entidade"
-             }, {
-                 "data" : "TotalMerc"
-             },{
-                 "data" : "Data"
-             }
-           ]
-         });
+     dataType: "json",
+     success : function(data, textStatus, jqXHR) {
+      $('#datatable-responsive').DataTable({
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<div style='text-align:center;'><button id='buttontab'><i class='fa fa-expand'></i></button><div>"
+        } ],
+        "data":data,
+       "columns" : [ {
+         "data" : "NumDoc"
+       },{
+         "data" : "Serie"
+       }, {
+         "data" : "Entidade"
+       }, {
+         "data" : "TotalMerc"
+       },{
+         "data" : "Data"
+       },{
+         "data" : ""
+       }]
+     });
 
 
-    $('#loading').css("display", "none");
-    $('#hiddendiv').css("visibility", "visible");
+      $('#loading').css("display", "none");
+      $('#hiddendiv').css("visibility", "visible");
 
+    }
+  });
+
+//codigo do expand
+  $('#datatable-responsive tbody').on( 'click', '#buttontab', function () {
+          var data = $('#datatable-responsive').DataTable().row( $(this).parents('tr') ).data();
+
+
+          $('#test').click();
+          $('#invoicelistcontent').css("visibility", "hidden");
+
+          populateInvoice(data);
+
+          $('#invoicecontent').css("visibility", "visible");
+
+
+        //  alert( JSON.stringify(data) );
+      } );
+//---
+
+    var handleDataTableButtons = function() {
+      if ($("#datatable-buttons").length) {
+        $("#datatable-buttons").DataTable({
+          dom: "Bfrtip",
+          buttons: [
+          {
+            extend: "copy",
+            className: "btn-sm"
+          },
+          {
+            extend: "csv",
+            className: "btn-sm"
+          },
+          {
+            extend: "excel",
+            className: "btn-sm"
+          },
+          {
+            extend: "pdfHtml5",
+            className: "btn-sm"
+          },
+          {
+            extend: "print",
+            className: "btn-sm"
+          },
+          ],
+          responsive: true
+        });
       }
-    });
+    };
 
-
-        var handleDataTableButtons = function() {
-          if ($("#datatable-buttons").length) {
-            $("#datatable-buttons").DataTable({
-              dom: "Bfrtip",
-              buttons: [
-                {
-                  extend: "copy",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "csv",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "excel",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "pdfHtml5",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "print",
-                  className: "btn-sm"
-                },
-              ],
-              responsive: true
-            });
-          }
-        };
-
-        TableManageButtons = function() {
-          "use strict";
-          return {
-            init: function() {
-              handleDataTableButtons();
-            }
-          };
-        }();
+    TableManageButtons = function() {
+      "use strict";
+      return {
+        init: function() {
+          handleDataTableButtons();
+        }
+      };
+    }();
 
       //  $('#datatable').dataTable();
 
-        $('#datatable-keytable').DataTable({
-          keys: true
-        });
-
-
-
-        $('#datatable-scroller').DataTable({
-          ajax: "js/datatables/json/scroller-demo.json",
-          deferRender: true,
-          scrollY: 380,
-          scrollCollapse: true,
-          scroller: true
-        });
-
-        $('#datatable-fixed-header').DataTable({
-          fixedHeader: true
-        });
-
-        var $datatable = $('#datatable-checkbox');
-
-        $datatable.dataTable({
-          'order': [[ 1, 'asc' ]],
-          'columnDefs': [
-            { orderable: false, targets: [0] }
-          ]
-        });
-        $datatable.on('draw.dt', function() {
-          $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-green'
-          });
-        });
-
-        TableManageButtons.init();
-
-
-
-
+      $('#datatable-keytable').DataTable({
+        keys: true
       });
 
-    </script>
-    <!-- /Datatables -->
 
-    <script>
-      $(document).ready(function() {
-        $('#reservation').daterangepicker(null, function(start, end, label) {
 
-  $('#test').click();
-  $('#loading2').css("visibility", "visible");
+      $('#datatable-scroller').DataTable({
+        ajax: "js/datatables/json/scroller-demo.json",
+        deferRender: true,
+        scrollY: 380,
+        scrollCollapse: true,
+        scroller: true
+      });
 
-   $('#datatable-responsive').DataTable().destroy()
+      $('#datatable-fixed-header').DataTable({
+        fixedHeader: true
+      });
+
+      var $datatable = $('#datatable-checkbox');
+
+      $datatable.dataTable({
+        'order': [[ 1, 'asc' ]],
+        'columnDefs': [
+        { orderable: false, targets: [0] }
+        ]
+      });
+      $datatable.on('draw.dt', function() {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_flat-green'
+        });
+      });
+
+      TableManageButtons.init();
+
+
+
+
+    });
+
+
+    var formatData = function(data){
+      var st = data;
+      st = st.slice(0,10)
+      var pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
+      var dt = st.replace(pattern,'$3-$2-$1');
+      return dt;
+    }
+
+  var  populateInvoice = function(data){
+
+
+
+
+      $('#invdate').text("Date: "+formatData(data.Data));
+
+      $('#invNo').text("Invoice #"+data.NumDoc);
+      $("#invSerie").after(data.Serie);
+      $("#invIden").text(data.Cliente.Nome);
+      $("#invMor").after(data.Cliente.Morada);
+      $("#invPais").after(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
+      $("#invTelef").after("Phone: "+data.Cliente.Telefone);
+      $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
+      $("#invDue").after(" "+formatData(data.DataVencimento));
+      $('#totalIva').text(data.TotalIva +" €");
+      $('#totalDesc').text(data.TotalDesc +" €");
+      $('#ModoPag').text(data.ModoPag);
+      $('#amountdue').text("Amount Due: "+formatData(data.DataVencimento));
+
+
+  //  id da table #invProdTable
+
+  $('#invProdTable').DataTable({
+    "bPaginate": false,
+    "bFilter": false,
+    "bInfo": false,
+    "paging":   false,
+    "ordering": false,
+    "info":     false,
+   "data": data.LinhasDoc,
+   "columns" : [ {
+     "data" : "Quantidade"
+   },{
+     "data" : "CodArtigo"
+   }, {
+     "data" : "DescArtigo"
+   },{
+     "data" : "PrecoUnitario"
+   },{
+    "data" : "TotalLiquido"
+   },{
+     "data" : "TaxaIva"
+   },{
+     "data" : "TotalILiquido"
+   }
+   ]
+  });
+
+
+  $("#subtotal").text(data.TotalMerc + " €");
+  $("#total").text(calcTotal(data) +" €");
+
+/*
+      "Cliente": {
+      "Nome": "Sofrio, Lda",
+      "Morada": "AV. DO ETERNO GELO, 88888",
+      "Telefone": "200267890",
+      "NumContribuinte": "123456789",
+      "MetPag": null,
+      "Pais": "PT"
+    }*/
+
+    }
+
+    var calcSubtotal = function(data){
+      var total=0;
+      data.forEach(function(item) {
+    // do something with `item`
+        total+=item.TotalLiquido
+        });
+    return total
+    }
+
+    var calcTotal = function(data){
+      var total=0;
+      total += data.TotalMerc + data.TotalIva - data.TotalDesc;
+
+      var total1 = Math.round(total * 100) / 100;
+
+    return total1
+    }
+
+
+  </script>
+  <!-- /Datatables -->
+
+  <script>
+    $(document).ready(function() {
+
+      $('#reservation').daterangepicker({
+    locale: {
+      format: 'DD-MM-YYYY'
+    },
+
+}, function(start, end, label) {
+
+        $('#test').click();
+        $('#invoicelistcontent').css("display", "none");
+        $('#invoicecontent').css("display", "none");
+
+        $('#loading2').css("visibility", "visible");
+
+
+        $('#datatable-responsive').DataTable().destroy()
 
 
 
         $.ajax({
-            url: 'http://localhost:49822/api/DocVenda',
-            data:{
-           typeDoc: 'FA',
+          url: 'http://localhost:49822/api/DocVenda',
+          data:{
+           typeDoc: 'ECL',
            dateBegin: start.toISOString().slice(0,-1),
            dateEnd: end.toISOString().slice(0,-1)
-        },
+         },
 
-            dataType: "json",
-            success : function(data, textStatus, jqXHR) {
-              $('#datatable-responsive').DataTable({
-                 "data": data,
-                 "columns" : [ {
-                     "data" : "NumDoc"
-                 },{
-                     "data" : "Serie"
-                 }, {
-                     "data" : "Entidade"
-                 }, {
-                     "data" : "TotalMerc"
-                 },{
-                     "data" : "Data"
-                 }
-               ]
-             });
+         dataType: "json",
+         success : function(data, textStatus, jqXHR) {
+          $('#datatable-responsive').DataTable({
+            "columnDefs": [ {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<div style='text-align:center;'><button id='buttontab'><i class='fa fa-expand'></i></button><div>"
+            } ],
+           "data": data,
+           "columns" : [ {
+             "data" : "NumDoc"
+           },{
+             "data" : "Serie"
+           }, {
+             "data" : "Entidade"
+           }, {
+             "data" : "TotalMerc"
+           },{
+             "data" : "Data"
+           },{
+             "data" : ""
+           }
+           ]
+         });
 
 
-             $('#loading2').css("visibility", "hidden");
-             $('#test').click();
-          }
-        });
 
+          $('#loading2').css("visibility", "hidden");
 
-          console.log(start.toISOString().slice(0,-1), end.toISOString(), label);
-        });
-
-        $('#reservation-time').daterangepicker({
-          timePicker: true,
-          timePickerIncrement: 30,
-          locale: {
-            format: 'DD/MM/YYYY h:mm A'
-          }
-        });
+          $('#test').click();
+          $('#invoicecontent').css("display", "none");
+          $('#invoicelistcontent').css("visibility", "visible");
+        }
       });
-    </script>
-  </body>
+
+      });
+
+
+    });
+  </script>
+</body>
 </html>
