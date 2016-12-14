@@ -333,7 +333,7 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Entidade as CodCliente, Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente, sum(TotalIva) as iva, sum(TotalDesc) as desc FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Entidade, Morada ORDER BY RendimentoCliente DESC");    
+                objList = PriEngine.Engine.Consulta("SELECT TOP " + nr + " Entidade as CodCliente, Nome as NomeCliente, Morada as MoradaCliente, sum(TotalMerc) as RendimentoCliente, sum(TotalIva) as iva, sum(TotalDesc) as desconto FROM CabecDoc WHERE TipoDoc = 'FA' GROUP BY Nome, Entidade, Morada ORDER BY RendimentoCliente DESC");    
                 while (!objList.NoFim())
 
                 {
@@ -341,7 +341,7 @@ namespace FirstREST.Lib_Primavera
                     tc.CodCliente = objList.Valor("CodCliente");
                     tc.NomeCliente = objList.Valor("NomeCliente");
                     tc.MoradaCliente = objList.Valor("MoradaCliente");
-                    tc.RendimentoCliente = objList.Valor("RendimentoCliente") + objList.Valor("iva") - objList.Valor("desc");
+                    tc.RendimentoCliente = objList.Valor("RendimentoCliente") + objList.Valor("iva") - objList.Valor("desconto");
 
                     listTC.Add(tc);
                     objList.Seguinte();
