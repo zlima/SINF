@@ -1004,7 +1004,7 @@ namespace FirstREST.Lib_Primavera
 
                 {
                     incMonth = new Model.TotalIncomeByMonth();
-                    incMonth.Valor = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
+                    incMonth.ValorInc = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
 
                     listINCmonth.Add(incMonth);
                     objList.Seguinte();
@@ -1025,6 +1025,7 @@ namespace FirstREST.Lib_Primavera
         {
 
             StdBELista objList;
+            StdBELista objList2;
            
 
             DateTime date = DateTime.Parse(dateBegin).AddMonths(-12);
@@ -1041,14 +1042,16 @@ namespace FirstREST.Lib_Primavera
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
                 objList = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor,sum(TotalIva) as iva, sum(TotalDesc) as desconto, Month(Data) as data FROM [CabecDoc] WHERE (TipoDoc = 'FA') AND Data<='" + dateBegin + "' and Data>='" + dateEnd + "' GROUP BY Month(Data)");
-
+                objList2 = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor,sum(TotalIva) as iva, sum(TotalDesc) as desconto, Month(DataDoc) as data FROM [CabecCompras]  WHERE DataDoc<='" + dateBegin + "' and DataDoc>='" + dateEnd + "' GROUP BY Month(DataDoc)");
                 int count = 1;
+                
+             
                 while (!objList.NoFim())
                 {
                     if (count == objList.Valor("data"))
                     {
                         incMonth = new Model.TotalIncomeByMonth();
-                        incMonth.Valor = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
+                        incMonth.ValorInc = Math.Abs(objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto"));
                         incMonth.Date = objList.Valor("data");
                         listINCmonth.Add(incMonth);
                         objList.Seguinte();
@@ -1057,7 +1060,7 @@ namespace FirstREST.Lib_Primavera
                     else
                     {
                         incMonth = new Model.TotalIncomeByMonth();
-                        incMonth.Valor = 0;
+                        incMonth.ValorInc = 0;
                         incMonth.Date =count;
                         listINCmonth.Add(incMonth);
                        
@@ -1065,13 +1068,48 @@ namespace FirstREST.Lib_Primavera
                     }
                    
                 }
+
+                int count2 = 1;
+                while (!objList2.NoFim())
+                {
+                    if (count2 == objList2.Valor("data"))
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.ValorOut = Math.Abs(objList2.Valor("Valor") + objList2.Valor("iva") - objList2.Valor("desconto"));
+                        incMonth.Date = objList2.Valor("data");
+                        listINCmonth.Add(incMonth);
+                        objList2.Seguinte();
+                        count2++;
+                    }
+                    else
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.ValorOut = 0;
+                        incMonth.Date = count2;
+                        listINCmonth.Add(incMonth);
+
+                        count2++;
+                    }
+                }
                 if (count <= 12)
                 {
                     while (count <= 12)
                     {
                         incMonth = new Model.TotalIncomeByMonth();
-                        incMonth.Valor = 0;
+                        incMonth.ValorInc = 0;
                         incMonth.Date = count;
+                        listINCmonth.Add(incMonth);
+
+                        count++;
+                    }
+                }
+                if (count2 <= 12)
+                {
+                    while (count2 <= 12)
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.ValorOut = 0;
+                        incMonth.Date = count2;
                         listINCmonth.Add(incMonth);
 
                         count++;

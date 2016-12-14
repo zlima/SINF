@@ -9,7 +9,13 @@ namespace FirstREST.Lib_Primavera.Model
 {
     public class TotalIncomeByMonth
     {
-        public double Valor
+        public double ValorInc
+        {
+            get;
+            set;
+        }
+
+        public double ValorOut
         {
             get;
             set;
