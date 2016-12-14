@@ -345,6 +345,7 @@
                   <!-- this row will not appear when printing -->
                   <div class="row no-print">
                     <div class="col-xs-12">
+                      <button class="btn btn-default" id="backbtn"><i class="fa fa-arrow-left"></i> Back</button>
                       <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
                       </div>
                   </div>
@@ -438,7 +439,12 @@
 <script>
   $(document).ready(function() {
 
+    $("#backbtn").click(function() {
+      $('#test').click();
 
+      $('#invoicecontent').css("visibility", "hidden");
+        $('#invoicelistcontent').css("visibility", "visible");
+});
     var currentDate = new Date();
     var day = (currentDate.getDate() < 10 ? '0' : '') + currentDate.getDate();
     var month = ((currentDate.getMonth() + 1) < 10 ? '0' : '') + (currentDate.getMonth() + 1);
