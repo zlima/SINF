@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>DataTables | Gentellela</title>
+  <title>Orders</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -134,7 +134,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Invoice List </h3>
+            <h3>Orders List </h3>
           </div>
 
 
@@ -200,7 +200,7 @@
 
               <div class="x_content" id="invoicelistcontent">
                 <p class="text-muted font-13 m-b-30">
-                  Summary of Invoices
+                  Summary of orders
                 </p>
                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                   <thead>
@@ -230,7 +230,7 @@
                   <div class="row">
                     <div class="col-xs-12 invoice-header">
                       <h1>
-                                      <i class="fa fa-globe"></i> Invoice.
+                                      <i class="fa fa-globe"></i> Order.
                                       <small class="pull-right" id="invdate"></small>
                                   </h1>
                     </div>
@@ -256,10 +256,10 @@
 
 
                                       <strong id="invIden"></strong>
-                                      <br id="invMor">
-                                      <br id="invPais">
-                                      <br id="invTelef">
-                                      <br id="invContr">
+                                      <br><span id="invMor"></span>
+                                      <br ><span id="invPais"></span>
+                                      <br ><span id="invTelef"></span>
+                                      <br ><span id="invContr"></span>
                                   </address>
                     </div>
                     <!-- /.col -->
@@ -267,9 +267,9 @@
                       <b id="invNo"></b>
                       <br>
                       <br>
-                      <b id="invSerie">Serie: </b>
+                      <b id="invSerie"> </b>
                       <br>
-                      <b id="invDue">Payment Due:</b>
+                      <b id="invDue"></b>
                       <br>
                     <!--  <b>Account:</b> 968-34567-->
                     </div>
@@ -345,6 +345,7 @@
                   <!-- this row will not appear when printing -->
                   <div class="row no-print">
                     <div class="col-xs-12">
+                      <button class="btn btn-default" id="backbtn"><i class="fa fa-arrow-left"></i> Back</button>
                       <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
                       </div>
                   </div>
@@ -437,7 +438,12 @@
 <!-- Datatables -->
 <script>
   $(document).ready(function() {
+    $("#backbtn").click(function() {
+      $('#test').click();
 
+      $('#invoicecontent').css("visibility", "hidden");
+        $('#invoicelistcontent').css("visibility", "visible");
+});
 
     var currentDate = new Date();
     var day = (currentDate.getDate() < 10 ? '0' : '') + currentDate.getDate();
@@ -451,7 +457,7 @@
     $.ajax({
       url: 'http://localhost:49822/api/DocVenda',
       data:{
-       typeDoc: 'FA',
+       typeDoc: 'ECL',
        dateBegin: '2016-06-01T00:00:00',
        dateEnd: sqldate
      },
@@ -597,18 +603,18 @@
   var  populateInvoice = function(data){
 
 
-
+  $('#invProdTable').DataTable().destroy();
 
       $('#invdate').text("Date: "+formatData(data.Data));
 
-      $('#invNo').text("Invoice #"+data.NumDoc);
-      $("#invSerie").after(data.Serie);
+      $('#invNo').text("Order #"+data.NumDoc);
+      $("#invSerie").text("Serie: "+data.Serie);
       $("#invIden").text(data.Cliente.Nome);
-      $("#invMor").after(data.Cliente.Morada);
-      $("#invPais").after(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
-      $("#invTelef").after("Phone: "+data.Cliente.Telefone);
-      $("#invContr").after("Contribuinte: "+data.Cliente.NumContribuinte);
-      $("#invDue").after(" "+formatData(data.DataVencimento));
+      $("#invMor").text(data.Cliente.Morada);
+      $("#invPais").text(data.Cliente.CodPostal+' '+data.Cliente.CodPostalLocalidade+', '+data.Cliente.Local);
+      $("#invTelef").text("Phone: "+data.Cliente.Telefone);
+      $("#invContr").text("Contribuinte: "+data.Cliente.NumContribuinte);
+      $("#invDue").text("Payment Due: "+formatData(data.DataVencimento));
       $('#totalIva').text(data.TotalIva +" €");
       $('#totalDesc').text(data.TotalDesc +" €");
       $('#ModoPag').text(data.ModoPag);
