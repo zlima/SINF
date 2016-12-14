@@ -267,14 +267,14 @@
     $(document).ready(function() {
 
      function kFormatter(num) {
-      if(num > 99999 || num < -99999 )
-       return (num/100000).toFixed(1) + 'B';
-     else if(num > 9999 || num < -9999)
-       return (num/10000).toFixed(1) + 'M';
-     else if(num > 999 || num < -999)
-       return (num/1000).toFixed(1) + 'K';
-     else return num;
-   }
+    if(num > 999999999 || num < -999999999 )
+     return (num/100000).toFixed(1) + 'B';
+   else if(num > 999999 || num < -999999)
+     return (num/10000).toFixed(1) + 'M';
+   else if(num > 999 || num < -999)
+     return (num/1000).toFixed(1) + 'K';
+   else return num;
+ }
 
 
     var currentDate = new Date();
