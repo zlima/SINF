@@ -83,6 +83,11 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public int CountFac
+        {
+            get;
+            set;
+        }
 
 
 

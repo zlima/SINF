@@ -1315,7 +1315,7 @@ namespace FirstREST.Lib_Primavera
             StdBELista objList3;
             StdBELista objList4;
             StdBELista objList5;
-
+            StdBELista objList6;
             List<Model.Dashboard> pyblcnt = new List<Model.Dashboard>();
             Model.Dashboard oc = new Model.Dashboard();
             Model.TopCliente tc = new Model.TopCliente();
@@ -1324,6 +1324,7 @@ namespace FirstREST.Lib_Primavera
             List<Model.TopCategoria> ltcat = new List<Model.TopCategoria>();
             Model.TopVenda tvend = new Model.TopVenda();
             List<Model.TopVenda> ltvend = new List<Model.TopVenda>();
+            
 
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
@@ -1333,13 +1334,15 @@ namespace FirstREST.Lib_Primavera
                 objList2 = PriEngine.Engine.Consulta(" SELECT ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-1,GETDATE())) as CountOrders, ( SELECT COUNT(*) FROM CabecDoc WHERE TipoDoc = 'ECL' and Data >= DATEADD(month,-2,GETDATE())) as CountOrdersb");
                 objList4 = PriEngine.Engine.Consulta("SELECT TOP 7 Artigo.Familia as Categoria, Familias.Descricao, SUM(PrecoLiquido) as totalCat FROM LinhasDoc LEFT JOIN CabecDoc ON LinhasDoc.IdCabecDoc=CabecDoc.ID LEFT JOIN Artigo ON LinhasDoc.Artigo = Artigo.Artigo LEFT JOIN Familias on Artigo.Familia = Familias.Familia WHERE CabecDoc.TipoDoc = 'FA' AND Artigo.Artigo <> 'NULL' AND Artigo.Familia <> 'NULL' group by Artigo.Familia, Familias.Descricao order by totalCat desc");
                 objList5 = PriEngine.Engine.Consulta("SELECT TOP 5 LinhasDoc.Artigo, Artigo.Descricao as NomeArtigo, sum(Quantidade) AS QuantidadeArtigo FROM LinhasDoc LEFT JOIN CabecDoc on LinhasDoc.IdCabecDoc = CabecDoc.Id left join Artigo on LinhasDoc.Artigo = Artigo.Artigo WHERE CabecDoc.TipoDoc = 'FA' AND LinhasDoc.Artigo <> 'NULL' Group by LinhasDoc.Artigo, Artigo.Descricao ORDER BY QuantidadeArtigo DESC");
+                objList6 = PriEngine.Engine.Consulta("SELECT COUNT(*) as cnt FROM CabecDoc WHERE TipoDoc = 'FA'");
                 oc = new Model.Dashboard();
                 oc.AccountsReceivable = objList.Valor("accountsreceivable");
                 oc.AccountsPayable = objList.Valor("accountspayable");
                 oc.NewClients = objList.Valor("countcli");
                 oc.Orders = objList.Valor("totalorders");
                 oc.newOrders = objList2.Valor("CountOrders");
-
+                oc.CountFac = objList6.Valor("cnt");
+                
                 int count = 1;
                 while (!objList3.NoFim())
                 {
@@ -1395,8 +1398,9 @@ namespace FirstREST.Lib_Primavera
                 var CountOrdersb = objList2.Valor("CountOrdersb");
                 oc.Increment = CountOrdersa - (CountOrdersb - CountOrdersa);
 
-
+               
                 pyblcnt.Add(oc);
+                
             }
 
             return pyblcnt;
@@ -1404,6 +1408,9 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion
+
+     
+       
 
 
     }
