@@ -220,6 +220,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewOrdersNumberController.cs" />
     <Compile Include="Controllers\OrdersCountController.cs" />
+    <Compile Include="Controllers\PreviousIncomeValuesController.cs" />
     <Compile Include="Controllers\TopCategoriasController.cs" />
     <Compile Include="Controllers\TopClientesController.cs" />
     <Compile Include="Controllers\TopRendimentoController.cs" />

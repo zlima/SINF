@@ -272,8 +272,6 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
-
- 
         #region Funcionario
         
         public static List<Model.Funcionario> ListaFuncionarios()
@@ -321,7 +319,6 @@ namespace FirstREST.Lib_Primavera
         }
         
         #endregion
-
 
         #region TopCliente
         public static List<Model.TopCliente> ListaTopCliente(long nr)
@@ -913,7 +910,6 @@ namespace FirstREST.Lib_Primavera
         }
         #endregion
 
-
         #region TotalIncome
         public static List<Model.TotalIncome> ListaIncome()
         {
@@ -927,12 +923,12 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor FROM CabecDoc WHERE TipoDoc = 'FA'");
+                objList = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor, sum(TotalIva) as iva, sum(TotalDesc) as desconto FROM CabecDoc WHERE TipoDoc = 'FA'");
                 while (!objList.NoFim())
 
                 {
                     inc = new Model.TotalIncome();
-                    inc.Valor = objList.Valor("Valor");
+                    inc.Valor = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
                  
                     listINC.Add(inc);
                     objList.Seguinte();
@@ -950,8 +946,7 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion
-
-        
+  
         #region TotalOutcome
         public static List<Model.TotalOutcome> ListaOutcome()
         {
@@ -1002,13 +997,14 @@ namespace FirstREST.Lib_Primavera
             {
 
                 // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
-                objList = PriEngine.Engine.Consulta("SELECT COALESCE (sum(TotalMerc),0) as Valor FROM [CabecDoc] WHERE (TipoDoc = 'FA') AND month(Data) = " + mes + " AND year(Data) = " + ano + "");
+                objList = PriEngine.Engine.Consulta("SELECT COALESCE (sum(TotalMerc),0) as Valor, (sum(TotalIva),0) as iva,(sum(TotalDesc),0) as desconto  FROM [CabecDoc] WHERE (TipoDoc = 'FA') AND month(Data) = " + mes + " AND year(Data) = " + ano + "");
+                                                                                                                    
 
                 while (!objList.NoFim())
 
                 {
                     incMonth = new Model.TotalIncomeByMonth();
-                    incMonth.Valor = objList.Valor("Valor");
+                    incMonth.Valor = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
 
                     listINCmonth.Add(incMonth);
                     objList.Seguinte();
@@ -1024,6 +1020,78 @@ namespace FirstREST.Lib_Primavera
             }
 
         }
+
+        public static List<Model.TotalIncomeByMonth> ListaIncomeLasMonths(string dateBegin)
+        {
+
+            StdBELista objList;
+           
+
+            DateTime date = DateTime.Parse(dateBegin).AddMonths(-12);
+            var dateEnd = date.ToString("yyyy-MM-ddTHH:mm:ss");
+
+            
+            Model.TotalIncomeByMonth incMonth = new Model.TotalIncomeByMonth();
+            List<Model.TotalIncomeByMonth> listINCmonth = new List<Model.TotalIncomeByMonth>();
+
+          
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                // objList = PriEngine.Engine.Comercial.Artigos.LstArtigos();
+                objList = PriEngine.Engine.Consulta("SELECT sum(TotalMerc) as Valor,sum(TotalIva) as iva, sum(TotalDesc) as desconto, Month(Data) as data FROM [CabecDoc] WHERE (TipoDoc = 'FA') AND Data<='" + dateBegin + "' and Data>='" + dateEnd + "' GROUP BY Month(Data)");
+
+                int count = 1;
+                while (!objList.NoFim())
+                {
+                    if (count == objList.Valor("data"))
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.Valor = objList.Valor("Valor") + objList.Valor("iva") - objList.Valor("desconto");
+                        incMonth.Date = objList.Valor("data");
+                        listINCmonth.Add(incMonth);
+                        objList.Seguinte();
+                        count++;
+                    }
+                    else
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.Valor = 0;
+                        incMonth.Date =count;
+                        listINCmonth.Add(incMonth);
+                       
+                        count++;
+                    }
+                   
+                }
+                if (count <= 12)
+                {
+                    while (count <= 12)
+                    {
+                        incMonth = new Model.TotalIncomeByMonth();
+                        incMonth.Valor = 0;
+                        incMonth.Date = count;
+                        listINCmonth.Add(incMonth);
+
+                        count++;
+                    }
+                }
+
+      
+
+                return listINCmonth;
+
+            }
+            else
+            {
+                return null;
+
+            }
+
+        }
+
+
 
         #endregion
   
