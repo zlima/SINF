@@ -242,30 +242,35 @@
     <script>
       $(document).ready(function() {
 
-        $('#datatable-responsive').DataTable({
-        "processing" : true,
-        "ajax" : {
-            "url" : "http://localhost:49822/api/Fornecedores",
-            dataSrc : ''
-        },
+        $.ajax({
+          url: 'http://localhost:49822/api/Fornecedores',
+          dataType: "json",
+          success : function(data, textStatus, jqXHR) {
+            $('#datatable-responsive').DataTable({
+             "data": data,
+             "columns" : [ {
+                 "data" : "CodFornecedor"
+             }, {
+                 "data" : "Nome"
+             }, {
+                 "data" : "NumContrib"
+             },
+             {
+               "data" : "ModoPag"
+             },
+             {
+               "data" : "Moeda"
+             },
+             {
+               "data" : "TotalDeb"
+             }]
 
-        "columns" : [ {
-            "data" : "CodFornecedor"
-        }, {
-            "data" : "Nome"
-        }, {
-            "data" : "NumContrib"
-        },
-        {
-          "data" : "ModoPag"
-        },
-        {
-          "data" : "Moeda"
-        },
-        {
-          "data" : "TotalDeb"
-        }]
-    });
+           });
+           $('#loading').css("display", "none");
+           $('#hiddendiv').css("visibility", "visible");
+         }});
+
+
 
         var handleDataTableButtons = function() {
           if ($("#datatable-buttons").length) {
@@ -313,7 +318,7 @@
           keys: true
         });
 
-        $('#datatable-responsive').DataTable();
+
 
         $('#datatable-scroller').DataTable({
           ajax: "js/datatables/json/scroller-demo.json",
