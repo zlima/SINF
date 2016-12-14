@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>DataTables | Gentellela</title>
+  <title>Financial</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-              <h3>General</h3>
+              <h3>Financial</h3>
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
@@ -121,7 +121,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Clients </h3>
+              <h3>Financial </h3>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -167,49 +167,43 @@
                 </div>
               </div>
             <!--</div>-->
-          </div>          
+          </div>
+          <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+              <div class="icon"><i class="glyphicon glyphicon-arrow-up"></i>
+              </div>
+              <div class="count" id="totalIncome"></div>
+              <h3>Total Income</h3>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+              <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
+              </div>
+              <div class="count" id="totalOutcome"></div>
+              <h3>Total Outcome</h3>
+            </div>
+          </div>
+          <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats" id="cenas">
+              <div class="icon"><i class="glyphicon glyphicon-plus"></i>
+              </div>
+              <div class="count" id="accountsPay"></div>
+              <h3>Accounts Payable</h3>
+              <p id="accountsPay"></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+              <div class="icon"><i class="glyphicon glyphicon-minus"></i>
+              </div>
+              <div class="count" id="accountsRec"></div>
+              <h3>Account Receivables</h3>
+              <p id="accountsRec"></p>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="">
-              <div class="x_content">
-                <div class="row">
 
-                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                      <div class="icon"><i class="glyphicon glyphicon-arrow-up"></i>
-                      </div>
-                      <div class="count" id="totalIncome"></div>
-                      <h3>Total Income</h3>
-                    </div>
-                  </div>
-                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                      <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
-                      </div>
-                      <div class="count" id="totalOutcome"></div>
-                      <h3>Total Outcome</h3>
-                    </div>
-                  </div>
-                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
-                    <div class="tile-stats" id="cenas">
-                      <div class="icon"><i class="glyphicon glyphicon-plus"></i>
-                      </div>
-                      <div class="count" id="accountsPay"></div>
-                      <h3>Accounts Payable</h3>
-                      <p id="accountsPay"></p>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                      <div class="icon"><i class="glyphicon glyphicon-minus"></i>
-                      </div>
-                      <div class="count" id="accountsRec"></div>
-                      <h3>Account Receivables</h3>
-                      <p id="accountsRec"></p>
-                    </div>
-                  </div>
-                </div>
               </div>
               <br />
             </div>
@@ -311,7 +305,7 @@
    var originalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
    var useMonths = [];
 
-    for(i = 11; i > -1; i--) { 
+    for(i = 11; i > -1; i--) {
       useMonths.push(originalMonths[months[i]-1]);
     }
 
@@ -353,14 +347,14 @@
    function getTotalIncome() {
     return $.ajax({
       url: 'http://localhost:49822/api/totalIncome',
-      dataType: "json",        
+      dataType: "json",
     });
   }
 
   function getTotalOutcome() {
     return $.ajax({
       url: 'http://localhost:49822/api/totalOutcome',
-      dataType: "json",        
+      dataType: "json",
     });
   }
 
@@ -368,7 +362,7 @@
   function getAccounts() {
     return $.ajax({
       url: 'http://localhost:49822/api/Dashboard',
-      dataType: "json",        
+      dataType: "json",
     });
   }
 
@@ -376,12 +370,12 @@
   function getPrevious(dateEnd) {
     return $.ajax({
       url: 'http://localhost:49822/api/PreviousIncomeValues?dateBegin=2015-12-31T00:00:00',// + dateEnd,
-      dataType: "json",        
+      dataType: "json",
     });
   }
 
   function ajax1() {
-    return $.ajax({ 
+    return $.ajax({
       url: 'http://localhost:49822/api/TotalOutcomeByMonth?mes=5&ano=2015',
       dataType: "json"
     });

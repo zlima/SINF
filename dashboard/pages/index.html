@@ -178,9 +178,9 @@
                            <div class="tile-stats">
                              <div class="icon"><i class="glyphicon glyphicon-dashboard"></i>
                              </div>
-                             <div class="count">34</div>
+                             <div class="count" id="totalfa"></div>
 
-                             <h3>Revenue</h3>
+                             <h3>Total FA</h3>
                              <p style="margin: 25px 0;"></p>
                            </div>
                          </div>
@@ -645,6 +645,7 @@
     $('#accountsrecqt').text(kFormatter(data[0].AccountsReceivable));
     $('#clientordersqt').text(data[0].Orders);
     $('#newordersqt').text(data[0].newOrders);
+    $('#totalfa').text(data[0].CountFac);
 
     for (i = 0; i < data[0].TopClientes.length; i++) {
       data[0].TopClientes[i].RendimentoCliente = kFormatter(data[0].TopClientes[i].RendimentoCliente);
