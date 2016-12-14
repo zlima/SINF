@@ -276,11 +276,21 @@
      else return num;
    }
 
-   $.when(ajax1(), getTotalIncome(), getTotalOutcome(), getAccounts(), getMonth(), getYear()).done(function(a1, totalIncome, totalOutcome, data, month, year){
+
+    var currentDate = new Date();
+    var day = (currentDate.getDate() < 10 ? '0' : '') + currentDate.getDate();
+    var month = ((currentDate.getMonth() + 1) < 10 ? '0' : '') + (currentDate.getMonth() + 1);
+    var year = currentDate.getFullYear();
+
+    var sqldate= year.toString()+'-'+month.toString()+'-'+day.toString()+'T00:00:00';
+
+   $.when(ajax1(), getTotalIncome(), getTotalOutcome(), getAccounts(), getMonth(), getYear(), getPrevious(sqldate)).done(function(a1, totalIncome, totalOutcome, data, month, year, date){
 
     var i; var year1 = year; var month1 = month;
     var months = [];
     var years = [];
+
+    console.log(date);
 
     for(i = 1; i < 13; i++) {
       months.push(month1);
@@ -301,7 +311,7 @@
    var originalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
    var useMonths = [];
 
-    for(i = 11; i > 0; i--) { 
+    for(i = 11; i > -1; i--) { 
       useMonths.push(originalMonths[months[i]-1]);
     }
 
@@ -320,7 +330,7 @@
       pointHoverBackgroundColor: "#fff",
       pointHoverBorderColor: "rgba(220,220,220,1)",
       pointBorderWidth: 1,
-      data: [31, 74, 6, 39, 20, 85, 7, 15]
+      data: [date[0][0].Valor, date[0][1].Valor, date[0][2].Valor, date[0][3].Valor, date[0][4].Valor, date[0][5].Valor, date[0][6].Valor, date[0][7].Valor, date[0][8].Valor, date[0][9].Valor, date[0][10].Valor, date[0][11].Valor]
     }, {
       label: "Outcome",
       backgroundColor: "rgba(3, 88, 106, 0.3)",
@@ -363,6 +373,12 @@
   }
 
 
+  function getPrevious(dateEnd) {
+    return $.ajax({
+      url: 'http://localhost:49822/api/PreviousIncomeValues?dateBegin=2015-12-31T00:00:00',// + dateEnd,
+      dataType: "json",        
+    });
+  }
 
   function ajax1() {
     return $.ajax({ 
