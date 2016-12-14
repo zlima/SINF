@@ -123,12 +123,8 @@
             <div class="title_left">
               <h3>Clients </h3>
             </div>
-
-
           </div>
-
           <div class="clearfix"></div>
-
           <div class="sk-fading-circle" id="loading">
             <div class="sk-circle1 sk-circle"></div>
             <div class="sk-circle2 sk-circle"></div>
@@ -143,9 +139,7 @@
             <div class="sk-circle11 sk-circle"></div>
             <div class="sk-circle12 sk-circle"></div>
           </div>
-
           <div class="row" id="hiddendiv" style="visibility:hidden">
-
             <div class="row">
              <div class="col-md-6 col-sm-6 col-xs-12">
               <div class="x_panel">
@@ -172,74 +166,56 @@
                   <canvas id="lineChart"></canvas>
                 </div>
               </div>
-            </div>
-          </div>
-
-
-          
+            <!--</div>-->
+          </div>          
         </div>
-
         <div class="row">
-              <div class="col-md-12">
-                <div class="">
-                  <div class="x_content">
-                    <div class="row">
+          <div class="col-md-12">
+            <div class="">
+              <div class="x_content">
+                <div class="row">
 
-                      <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                          <div class="icon"><i class="glyphicon glyphicon-arrow-up"></i>
-                          </div>
-                          <div class="count" id="totalIncome"></div>
-
-                          <h3>Total Income</h3>
-                          <p>Lorem ipsum psdea itgum rixt.</p>
-                        </div>
+                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                      <div class="icon"><i class="glyphicon glyphicon-arrow-up"></i>
                       </div>
-                      <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                          <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
-                          </div>
-                          <div class="count" id="totalOutcome"></div>
-
-                          <h3>Total Outcome</h3>
-                          <p>Lorem ipsum psdea itgum rixt.</p>
-                        </div>
-                      </div>
-
-
+                      <div class="count" id="totalIncome"></div>
+                      <h3>Total Income</h3>
                     </div>
-
-                    <div class="row top_tiles" style="margin: 10px 0;">
-                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <div class="tile-stats" id="cenas">
-                        <div class="icon"><i class="glyphicon glyphicon-plus"></i>
-                        </div>
-                        <div class="count" id="hstockid"></div>
-
-                        <h3>Debit</h3>
-                        <p id="hstockqt"></p>
+                  </div>
+                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                      <div class="icon"><i class="glyphicon glyphicon-arrow-down"></i>
                       </div>
+                      <div class="count" id="totalOutcome"></div>
+                      <h3>Total Outcome</h3>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <div class="tile-stats">
-                        <div class="icon"><i class="glyphicon glyphicon-minus"></i>
-                        </div>
-                        <div class="count" id="lstockid"></div>
-
-                        <h3>Account Receivables</h3>
-                        <p id="lstockqt"></p>
+                  </div>
+                  <div class="animated flipInY col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats" id="cenas">
+                      <div class="icon"><i class="glyphicon glyphicon-plus"></i>
                       </div>
+                      <div class="count" id="accountsPay"></div>
+                      <h3>Accounts Payable</h3>
+                      <p id="accountsPay"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                      <div class="icon"><i class="glyphicon glyphicon-minus"></i>
+                      </div>
+                      <div class="count" id="accountsRec"></div>
+                      <h3>Account Receivables</h3>
+                      <p id="accountsRec"></p>
                     </div>
                   </div>
                 </div>
-
-
-
-
-                <br />
               </div>
+              <br />
             </div>
           </div>
+          </div>
+        </div>
       </div>
       <!-- /page content -->
 
@@ -300,10 +276,7 @@
      else return num;
    }
 
-   $.when(ajax1(), ajax2(), ajax3(), getMonth(), getYear()).done(function(a1, totalIncome, totalOutcome, month, year){
-    //alert(month);
-
-  
+   $.when(ajax1(), getTotalIncome(), getTotalOutcome(), getAccounts(), getMonth(), getYear()).done(function(a1, totalIncome, totalOutcome, data, month, year){
 
     var i; var year1 = year; var month1 = month;
     var months = [];
@@ -320,24 +293,18 @@
       }
     }
 
-   // alert(months);//alert(years);
+   $('#totalIncome').text(kFormatter(totalIncome[0][0].Valor));
+   $('#totalOutcome').text(kFormatter(totalOutcome[0][0].Valor));
+   $('#accountsPay').text(kFormatter(data[0][0].AccountsPayable));
+   $('#accountsRec').text(kFormatter(data[0][0].AccountsReceivable));
 
+   var originalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+   var useMonths = [];
 
-    //alert(month); alert(year);
-   // alert(a1[0].Valor);
-    $('#totalIncome').text(kFormatter(totalIncome[0][0].Valor));
-    $('#totalOutcome').text(kFormatter(totalOutcome[0][0].Valor));
-
-
-
-    var originalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var useMonths = [];
-
-    //alert(months);
-    for(i = 11; i > 0; i--)
-    { //alert(months[0]);
+    for(i = 11; i > 0; i--) { 
       useMonths.push(originalMonths[months[i]-1]);
     }
+
  // Line chart
  var ctx = document.getElementById("lineChart");
  var lineChart = new Chart(ctx, {
@@ -373,40 +340,55 @@
 });
 
 
-   function ajax2() {
+   function getTotalIncome() {
     return $.ajax({
       url: 'http://localhost:49822/api/totalIncome',
       dataType: "json",        
-   });
- }
+    });
+  }
 
-   function ajax3() {
+  function getTotalOutcome() {
     return $.ajax({
       url: 'http://localhost:49822/api/totalOutcome',
       dataType: "json",        
-   });
- }
+    });
+  }
 
-   function ajax1() {
+
+  function getAccounts() {
+    return $.ajax({
+      url: 'http://localhost:49822/api/Dashboard',
+      dataType: "json",        
+    });
+  }
+
+  function getPrevious(Incomedata) {
+
+     $.ajax({
+          url: 'http://localhost:49822/api/PreviousIncomeValues',
+          data:{
+           dateEnd: data.toISOString().slice(0,-1),
+         },
+  }
+
+  function ajax1() {
     return $.ajax({ 
       url: 'http://localhost:49822/api/TotalOutcomeByMonth?mes=5&ano=2015',
       dataType: "json"
     });
   }
 
-   function getMonth() {
+  function getMonth() {
     var d = new Date();
     var n = d.getMonth();
     return n+1;
   }
 
-   function getYear() {
+  function getYear() {
     var d = new Date();
     var n = d.getFullYear();
     return n;
   }
-
-
 
   var handleDataTableButtons = function() {
     if ($("#datatable-buttons").length) {
